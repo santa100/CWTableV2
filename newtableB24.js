@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB23 extends HTMLElement {
+  class myNewTableB24 extends HTMLElement {
     constructor () {
       super()
 
@@ -104,9 +104,8 @@
       var table_output = '<div id="table-wrapper"><div id="table-scroll">'
       
       // Table Headers & Body
-      table_output += '<table><thead><tr><th>Start Date</th><th>Order Id</th><th>Order Type</th><th>Product</th>
-      <th>Batch</th><th>End Date</th><th>Pack Size</th><th>Folding Box</th><th>Leaflet</th><th>Vial Size</th>
-      <th>Comments</th>'
+      table_output += '<table><thead><tr><th>Start Date</th><th>Order Id</th><th>Order Type</th><th>Product</th><th>Batch</th><th>End Date</th>'
+      table_output += '<th>Pack Size</th><th>Folding Box</th><th>Leaflet</th><th>Vial Size</th><th>Comments</th>'
       table_output += '<th>Quantity</th><th>Step Duration/th></tr></thead><tbody>'
       
       // initialize counter of cells
@@ -131,49 +130,32 @@
       resultSet.forEach(dp => {
           //console.log(dp)
         
-              var cDimension = dp['/ROH/OPSSTDAT']
-              var cStartDate = cDimension['description']
-              cDimension = dp['/ROH/OPSOERID']
-              var cOrderId = cDimension['description']
-              cDimension = dp['/ROH/OPSODTY']
-              var cOrderType = cDimension['description']
-              cDimension = dp['/ROH/OPS0PRODC']
-              var cProduct = cDimension['description']
-              cDimension = dp['HQ0BAT2H']
-              var cBatch = cDimension['description']
-              cDimension = dp['/ROH/OPSENDAT']
-              var cEndDate = cDimension['description']
-              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSPACKS']
-              var cPackSize = cDimension['description']
-              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
-              var cFoldingBox = cDimension['description']
-              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSLEAFLT']
-              var cLeaflet = cDimension['description']
-              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSVIASZ']
-              var cVialSize = cDimension['description']
-              cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
-              var cComments = cDimension['description']
-              
-              /*
-              console.log("cStartDate=" + cStartDate)
-              console.log("cOrderId=" + cOrderId)
-              console.log("cOrderType=" + cOrderType)
-              console.log("cProduct=" + cProduct)
-              console.log("cBatch=" + cBatch)
-              console.log("cEndDate=" + cEndDate)
-              console.log("cPackSize=" + cPackSize)
-              console.log("cFoldingBox=" + cFoldingBox)
-              console.log("cLeaflet=" + cLeaflet)
-              console.log("cStartDate=" + cStartDate)
-              console.log("cComments=" + cComments)
-              */
+          var cDimension = dp['/ROH/OPSSTDAT']
+          var cStartDate = cDimension['description']
+          cDimension = dp['/ROH/OPSOERID']
+          var cOrderId = cDimension['description']
+          cDimension = dp['/ROH/OPSODTY']
+          var cOrderType = cDimension['description']
+          cDimension = dp['/ROH/OPS0PRODC']
+          var cProduct = cDimension['description']
+          cDimension = dp['HQ0BAT2H']
+          var cBatch = cDimension['description']
+          cDimension = dp['/ROH/OPSENDAT']
+          var cEndDate = cDimension['description']
+          cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSPACKS']
+          var cPackSize = cDimension['description']
+          cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
+          var cFoldingBox = cDimension['description']
+          cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSLEAFLT']
+          var cLeaflet = cDimension['description']
+          cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSVIASZ']
+          var cVialSize = cDimension['description']
+          cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
+          var cComments = cDimension['description']
             
-              // Get the description & formattedValue from the measures (@MeasureDimension)
-              var { formattedValue, description } = dp['@MeasureDimension']
+          // Get the description & formattedValue from the measures (@MeasureDimension)
+          var { formattedValue, description } = dp['@MeasureDimension']
               
-              // console.log(" Measure: " + description + "  =   " + formattedValue)
-          
-
           // First cell
           if (counterCells === 1)
           {
@@ -231,6 +213,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb23', myNewTableB23)
+  customElements.define('com-sap-sample-newtableb24', myNewTableB24)
   
 })() // END of function --> (function () {
