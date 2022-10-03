@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB9 extends HTMLElement {
+  class myNewTableB10 extends HTMLElement {
     constructor () {
       super()
 
@@ -168,8 +168,7 @@
               console.log(" Measure: " + description + "  =   " + formattedValue)
             
               var { id } = dp['/ROH/OPSSTDAT']
-              console.log(a)
-              console.log(b)            
+              console.log(id)
               
           }
         
@@ -231,6 +230,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb9', myNewTableB9)
+  customElements.define('com-sap-sample-newtableb10', myNewTableB10)
   
 })() // END of function --> (function () {
