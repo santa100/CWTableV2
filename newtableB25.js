@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB24 extends HTMLElement {
+  class myNewTableB25 extends HTMLElement {
     constructor () {
       super()
 
@@ -106,7 +106,7 @@
       // Table Headers & Body
       table_output += '<table><thead><tr><th>Start Date</th><th>Order Id</th><th>Order Type</th><th>Product</th><th>Batch</th><th>End Date</th>'
       table_output += '<th>Pack Size</th><th>Folding Box</th><th>Leaflet</th><th>Vial Size</th><th>Comments</th>'
-      table_output += '<th>Quantity</th><th>Step Duration/th></tr></thead><tbody>'
+      table_output += '<th>Quantity</th><th>Step Duration</th></tr></thead><tbody>'
       
       // initialize counter of cells
       var counterCells = 1
@@ -182,7 +182,7 @@
             table_output += '<td><font style="font-size:12px;">'+ cPackSize +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cFoldingBox +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cLeaflet +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cStartDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cVialSize +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cComments +'</font></td>'
 
             table_output += '<td><font style="font-size:12px;">'+ cValueQuantity +'</font></td>'
@@ -213,6 +213,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb24', myNewTableB24)
+  customElements.define('com-sap-sample-newtableb25', myNewTableB25)
   
 })() // END of function --> (function () {
