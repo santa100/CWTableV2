@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB21 extends HTMLElement {
+  class myNewTableB22 extends HTMLElement {
     constructor () {
       super()
 
@@ -154,8 +154,8 @@
               var cLeaflet = cDimension['description']
               cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSVIASZ']
               var cVialSize = cDimension['description']
-              // cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
-              // var cComments = cDimension['description']
+              cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
+              var cComments = cDimension['description']
               
               console.log("cStartDate=" + cStartDate)
               console.log("cOrderId=" + cOrderId)
@@ -167,7 +167,7 @@
                console.log("cFoldingBox=" + cFoldingBox)
                 console.log("cLeaflet=" + cLeaflet)
                 console.log("cStartDate=" + cStartDate)
-              // console.log("cComments=" + cComments)
+                  console.log("cComments=" + cComments)
               
             
               // Get the description & formattedValue from the measures (@MeasureDimension)
@@ -251,6 +251,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb21', myNewTableB21)
+  customElements.define('com-sap-sample-newtableb22', myNewTableB22)
   
 })() // END of function --> (function () {
