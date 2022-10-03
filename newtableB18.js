@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB17 extends HTMLElement {
+  class myNewTableB18 extends HTMLElement {
     constructor () {
       super()
 
@@ -144,14 +144,14 @@
               var cProduct = cDimension['description']
               cDimension = dp['HQ0BAT2H']
               var cBatch = cDimension['description']
-              // cDimension = dp['/ROH/OPSENDAT']
-              // var cEndDate = cDimension['description']
-              // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSPACKS']
-              // var cPackSize = cDimension['description']
-              // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
-              // var cFoldingBox = cDimension['description']n
-              // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSLEAFLT']
-              // var cLeaflet = cDimension['description']
+              cDimension = dp['/ROH/OPSENDAT']
+              var cEndDate = cDimension['description']
+              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSPACKS']
+              var cPackSize = cDimension['description']
+              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
+              var cFoldingBox = cDimension['description']n
+              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSLEAFLT']
+              var cLeaflet = cDimension['description']
               // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSVIASZ']
               // var cVialSize = cDimension['description']
               // cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
@@ -162,10 +162,10 @@
               console.log("cOrderType=" + cOrderType)
               console.log("cProduct=" + cProduct)
               console.log("cBatch=" + cBatch)
-              // console.log("cEndDate=" + cEndDate)
-              // console.log("cPackSize=" + cPackSize)
-              // console.log("cFoldingBox=" + cFoldingBox)
-              // console.log("cLeaflet=" + cLeaflet)
+               console.log("cEndDate=" + cEndDate)
+               console.log("cPackSize=" + cPackSize)
+               console.log("cFoldingBox=" + cFoldingBox)
+               console.log("cLeaflet=" + cLeaflet)
               // console.log("cStartDate=" + cStartDate)
               // console.log("cComments=" + cComments)
               
@@ -251,6 +251,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb17', myNewTableB17)
+  customElements.define('com-sap-sample-newtableb18', myNewTableB18)
   
 })() // END of function --> (function () {
