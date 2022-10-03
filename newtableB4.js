@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB3 extends HTMLElement {
+  class myNewTableB4 extends HTMLElement {
     constructor () {
       super()
 
@@ -136,6 +136,8 @@
           {
               var cStartDate = dp./ROH/OPSSTDAT.description
               var cOrderId = dp./ROH/OPSOERID.description
+              
+              /*
               var cOrderType = dp./ROH/OPSODTY.description
               var cProduct = dp./ROH/OPS0PRODC.description
               var cBatch = dp.HQ0BAT2H.description
@@ -145,9 +147,12 @@
               var cLeaflet = dp./ROH/OPS0PRODC__/ROH/OPSLEAFLT.description
               var cVialSize = dp./ROH/OPS0PRODC__/ROH/OPSVIASZ.description
               var cComments = dp.4B7H&OPSCP07N-ALLCOMMENTS.description
+              */
               
               console.log("cStartDate=" + cStartDate)
               console.log("cOrderId=" + cOrderId)
+              
+              /*
               console.log("cOrderType=" + cOrderType)
               console.log("cProduct=" + cProduct)
               console.log("cBatch=" + cBatch)
@@ -157,11 +162,12 @@
               console.log("cLeaflet=" + cLeaflet)
               console.log("cStartDate=" + cStartDate)
               console.log("cComments=" + cComments)
+              */
             
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { formattedValue, description } = dp['@MeasureDimension']
               
-              console.log(" Meaure: " + description + "  =   " + formattedValue)
+              console.log(" Measure: " + description + "  =   " + formattedValue)
               
           }
         
@@ -223,6 +229,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb3', myNewTableB3)
+  customElements.define('com-sap-sample-newtableb4', myNewTableB4)
   
 })() // END of function --> (function () {
