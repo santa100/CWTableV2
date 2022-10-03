@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB4 extends HTMLElement {
+  class myNewTableB5 extends HTMLElement {
     constructor () {
       super()
 
@@ -134,10 +134,9 @@
             
           if (dummy<10)
           {
+              /*
               var cStartDate = dp./ROH/OPSSTDAT.description
               var cOrderId = dp./ROH/OPSOERID.description
-              
-              /*
               var cOrderType = dp./ROH/OPSODTY.description
               var cProduct = dp./ROH/OPS0PRODC.description
               var cBatch = dp.HQ0BAT2H.description
@@ -149,10 +148,9 @@
               var cComments = dp.4B7H&OPSCP07N-ALLCOMMENTS.description
               */
               
+              /*
               console.log("cStartDate=" + cStartDate)
               console.log("cOrderId=" + cOrderId)
-              
-              /*
               console.log("cOrderType=" + cOrderType)
               console.log("cProduct=" + cProduct)
               console.log("cBatch=" + cBatch)
@@ -229,6 +227,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb4', myNewTableB4)
+  customElements.define('com-sap-sample-newtableb5', myNewTableB5)
   
 })() // END of function --> (function () {
