@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB22 extends HTMLElement {
+  class myNewTableB23 extends HTMLElement {
     constructor () {
       super()
 
@@ -104,8 +104,10 @@
       var table_output = '<div id="table-wrapper"><div id="table-scroll">'
       
       // Table Headers & Body
-      table_output += '<table><thead><tr><th>Order Date</th><th>Region</th><th>Location</th><th>Sales Manager</th><th>Store</th><th>Product</th>'
-      table_output += '<th>Gross Margin</th><th>Sales Revenue</th></tr></thead><tbody>'
+      table_output += '<table><thead><tr><th>Start Date</th><th>Order Id</th><th>Order Type</th><th>Product</th>
+      <th>Batch</th><th>End Date</th><th>Pack Size</th><th>Folding Box</th><th>Leaflet</th><th>Vial Size</th>
+      <th>Comments</th>'
+      table_output += '<th>Quantity</th><th>Step Duration/th></tr></thead><tbody>'
       
       // initialize counter of cells
       var counterCells = 1
@@ -116,24 +118,19 @@
       // Control first row only
       var firstRow = true
       
-      // Measures values
-      var cValueGrossMargin = " - "
-      var cValueSalesRevenue = " - "
+      // Measures values initialization
+      var cValueQuantity = " - "
+      var cValueStepDuration = " - "
       
       console.log('----------------')
-
-      
-      var dummy = 0
       
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
       // Loop through the resultset delivered from the backend vvvvvvvvvvvv
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv      
 
       resultSet.forEach(dp => {
-          console.log(dp)
+          //console.log(dp)
         
-          if (dummy<10)
-          {
               var cDimension = dp['/ROH/OPSSTDAT']
               var cStartDate = cDimension['description']
               cDimension = dp['/ROH/OPSOERID']
@@ -157,74 +154,57 @@
               cDimension = dp['4B7H&OPSCP07N-ALLCOMMENTS']
               var cComments = cDimension['description']
               
+              /*
               console.log("cStartDate=" + cStartDate)
               console.log("cOrderId=" + cOrderId)
               console.log("cOrderType=" + cOrderType)
               console.log("cProduct=" + cProduct)
               console.log("cBatch=" + cBatch)
-               console.log("cEndDate=" + cEndDate)
-               console.log("cPackSize=" + cPackSize)
-               console.log("cFoldingBox=" + cFoldingBox)
-                console.log("cLeaflet=" + cLeaflet)
-                console.log("cStartDate=" + cStartDate)
-                  console.log("cComments=" + cComments)
-              
+              console.log("cEndDate=" + cEndDate)
+              console.log("cPackSize=" + cPackSize)
+              console.log("cFoldingBox=" + cFoldingBox)
+              console.log("cLeaflet=" + cLeaflet)
+              console.log("cStartDate=" + cStartDate)
+              console.log("cComments=" + cComments)
+              */
             
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { formattedValue, description } = dp['@MeasureDimension']
               
-              console.log(" Measure: " + description + "  =   " + formattedValue)
-            
-            /*
-              var { id } = dp['/ROH/OPSSTDAT']
-              console.log(id)
-              
-              var armando = dp['/ROH/OPSSTDAT']
-              console.log(armando['description'])
-            
-              armando = dp['/ROH/OPSOERID']
-              console.log(armando['id'])
-              console.log(armando['description'])   
-            
-              armando = dp['/ROH/OPSODTY']
-              console.log(armando['id'])
-              console.log(armando['description'])                
-            */
-            
-          }
-        
-        
-          dummy = dummy + 1
+              // console.log(" Measure: " + description + "  =   " + formattedValue)
           
-       /*
 
-          // Country first cell
+          // First cell
           if (counterCells === 1)
           {
-              cValueGrossMargin = formattedValue
+              cValueQuantity = formattedValue
           } else if (counterCells === 2)
           {
-              cValueSalesRevenue = formattedValue
+              cValueStepDuration = formattedValue
           }
 
           // Increment the cells counter
           counterCells = counterCells + 1
-
-      */       
+     
 
           // Reset the counter for each row
           if (counterCells>2) 
           {
             // Write into table all dimensions & measures at once (one go only)
-            table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cRegion +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cLocation +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cSalesMan +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cStore +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cStartDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cOrderId +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cOrderType +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cProduct +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cBatch +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cEndDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cPackSize +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cFoldingBox +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cLeaflet +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cStartDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cComments +'</font></td>'
 
-            table_output += '<td><font style="font-size:12px;">'+ cValueGrossMargin +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cValueSalesRevenue +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cValueQuantity +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cValueStepDuration +'</font></td>'
 
             // Close each row
             table_output += '</tr>'
@@ -251,6 +231,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb22', myNewTableB22)
+  customElements.define('com-sap-sample-newtableb23', myNewTableB23)
   
 })() // END of function --> (function () {
