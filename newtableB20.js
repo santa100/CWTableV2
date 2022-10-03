@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class myNewTableB19 extends HTMLElement {
+  class myNewTableB20 extends HTMLElement {
     constructor () {
       super()
 
@@ -148,8 +148,8 @@
               var cEndDate = cDimension['description']
               cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSPACKS']
               var cPackSize = cDimension['description']
-              // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
-              // var cFoldingBox = cDimension['description']n
+              cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSFOLDB']
+              var cFoldingBox = cDimension['description']n
               // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSLEAFLT']
               // var cLeaflet = cDimension['description']
               // cDimension = dp['/ROH/OPS0PRODC__/ROH/OPSVIASZ']
@@ -164,7 +164,7 @@
               console.log("cBatch=" + cBatch)
                console.log("cEndDate=" + cEndDate)
                console.log("cPackSize=" + cPackSize)
-              //  console.log("cFoldingBox=" + cFoldingBox)
+               console.log("cFoldingBox=" + cFoldingBox)
               //  console.log("cLeaflet=" + cLeaflet)
               // console.log("cStartDate=" + cStartDate)
               // console.log("cComments=" + cComments)
@@ -251,6 +251,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-newtableb19', myNewTableB19)
+  customElements.define('com-sap-sample-newtableb20', myNewTableB20)
   
 })() // END of function --> (function () {
