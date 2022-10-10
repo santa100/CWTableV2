@@ -133,48 +133,25 @@
       console.log('quarterArray:')
       console.log(quarterArray)
       
-      resultSet.forEach(dp => {
-          //console.log(dp)
+      resultSet.forEach(dp2 => {
+          console.log(dp2)
         
-          cDimension = dp['19929390-5897-4181-9551-350442615312']
+          cDimension = dp2['19929390-5897-4181-9551-350442615312']
           cQuarter = cDimension['description']
             
           // Get the description & formattedValue from the measures (@MeasureDimension)
-          { formattedValue, description } = dp['@MeasureDimension']
+          { formattedValue, description } = dp2['@MeasureDimension']
               
-          // First cell
-          if (counterCells === 1)
-          {
-              cValueGM = formattedValue
-          }
-
-          // Increment the cells counter
-          counterCells = counterCells + 1
-     
-
-          // Reset the counter for each row
-          if (counterCells>1) 
-          {
-            // Write into table all dimensions at once (one go only)
-            table_output += '<td><font style="font-size:12px;">'+ cQuarter +'</font></td>'
-             // Write into table all measures at once
-            table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
-
-            // Close each row
-            table_output += '</tr>'
-
-            // Moved into a different country and
-            // Reset the counter, to start a new row
-            counterCells = 1
-          }
+          console.log(cQuarter)
+          console.log(formattedValue)
         
       }) // END of loop --> resultSet.forEach(dp => {
     
       //Close all used tags
-      table_output += '</tbody></table></div></div>'
+      ///////////////table_output += '</tbody></table></div></div>'
     
       // replace above element "my_data" with the HTML table output (final HTML table built above)
-      this._shadowRoot.getElementById('my_data').innerHTML = table_output
+      ///////////////this._shadowRoot.getElementById('my_data').innerHTML = table_output
       
       // to avoid memory issues, release from memory the huge HTML string (table_output)
       table_output = ''
@@ -185,6 +162,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV4)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV5)
   
 })() // END of function --> (function () {
