@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV20 extends HTMLElement {
+  class FlexTableV21 extends HTMLElement {
     constructor () {
       super()
 
@@ -141,15 +141,7 @@
           var cDimension = dp2['19929390-5897-4181-9551-350442615312']
           var cQuarter = cDimension['description']
           
-          let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7)
-          
-          let position = quarterArray.indexOf(year_plus_1)
-          
-          if (position>0)
-          {
-             let content = quarterArray[position]
-          }
-          
+          let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7) 
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, description } = dp2['@MeasureDimension']
@@ -160,20 +152,46 @@
         
           for (var index=0; index<quarterArray.length; index++) {
             if (quarterArray[index].includes(year_plus_1)) {
-              position = index
+              let position = index
               console.log(position)
               console.log(quarterArray[index])
               break
             }
           }
         
+          // First cell
+          if (counterCells === 1)
+          {
+              cValueGM = formattedValue
+          }
+
+          // Increment the cells counter
+          counterCells = counterCells + 1
+     
+          // Reset the counter for each row
+          if (counterCells>1) 
+          {
+            // Write into table all dimensions at once (one go only)
+            table_output += '<td><font style="font-size:12px;">'+ cQuarter +'</font></td>'
+             // Write into table all measures at once
+            table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+
+            // Close each row
+            table_output += '</tr>'
+
+            // Moved into a different country and
+            // Reset the counter, to start a new row
+            counterCells = 1
+          }
+        
+        
       }) // END of loop --> resultSet.forEach(dp => {
     
       //Close all used tags
-      ///////////////table_output += '</tbody></table></div></div>'
+      table_output += '</tbody></table></div></div>'
     
       // replace above element "my_data" with the HTML table output (final HTML table built above)
-      ///////////////this._shadowRoot.getElementById('my_data').innerHTML = table_output
+      this._shadowRoot.getElementById('my_data').innerHTML = table_output
       
       // to avoid memory issues, release from memory the huge HTML string (table_output)
       table_output = ''
@@ -184,6 +202,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV20)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV21)
   
 })() // END of function --> (function () {
