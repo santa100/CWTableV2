@@ -134,7 +134,7 @@
       console.log(quarterArray)
       
       resultSet.forEach(dp2 => {
-          console.log(dp2)
+          //console.log(dp2)
         
           cDimension = dp2['19929390-5897-4181-9551-350442615312']
           cQuarter = cDimension['description']
