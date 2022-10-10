@@ -133,6 +133,8 @@
       console.log('quarterArray:')
       console.log(quarterArray)
       
+      console.log('----------------')
+
       resultSet.forEach(dp2 => {
           //console.log(dp2)
         
