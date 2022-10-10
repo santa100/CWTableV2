@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV2 extends HTMLElement {
+  class FlexTableV3 extends HTMLElement {
     constructor () {
       super()
 
@@ -117,16 +117,31 @@
       
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
       // Loop through the resultset delivered from the backend vvvvvvvvvvvv
-      // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv      
+      // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 
+      
+      const quarterArray = [];
 
       resultSet.forEach(dp => {
-          console.log(dp)
-        
           var cDimension = dp['19929390-5897-4181-9551-350442615312']
           var cQuarter = cDimension['description']
+          var { formattedValue, description } = dp['@MeasureDimension']
+          var quarterValue = cQuarter + ';' + formattedValue
+          
+          quarterArray.push(quarterValue)
+          
+      })
+      
+      console.log('quarterArray:')
+      console.log(quarterArray)
+      
+      resultSet.forEach(dp => {
+          //console.log(dp)
+        
+          cDimension = dp['19929390-5897-4181-9551-350442615312']
+          cQuarter = cDimension['description']
             
           // Get the description & formattedValue from the measures (@MeasureDimension)
-          var { formattedValue, description } = dp['@MeasureDimension']
+          { formattedValue, description } = dp['@MeasureDimension']
               
           // First cell
           if (counterCells === 1)
@@ -171,6 +186,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV2)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV3)
   
 })() // END of function --> (function () {
