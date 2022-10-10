@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV10 extends HTMLElement {
+  class FlexTableV11 extends HTMLElement {
     constructor () {
       super()
 
@@ -143,13 +143,20 @@
           
           let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7)
           
+          let position = quarterArray.indexOf(year_plus_1)
+          
+          if (let>0)
+          {
+             let content = quarterArray=[position]
+          }
+          
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, description } = dp2['@MeasureDimension']
               
           console.log(cQuarter)
           console.log(rawValue)
-          console.log(year_plus_1)
+          console.log(content)
         
       }) // END of loop --> resultSet.forEach(dp => {
     
@@ -168,6 +175,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV10)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV11)
   
 })() // END of function --> (function () {
