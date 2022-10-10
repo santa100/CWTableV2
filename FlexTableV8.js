@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV7 extends HTMLElement {
+  class FlexTableV8 extends HTMLElement {
     constructor () {
       super()
 
@@ -124,8 +124,8 @@
       resultSet.forEach(dp1 => {
           var cDimension = dp1['19929390-5897-4181-9551-350442615312']
           var cQuarter = cDimension['description']
-          var { formattedValue, description } = dp1['@MeasureDimension']
-          var quarterValue = cQuarter + ';' + formattedValue
+          var { rawValue, description } = dp1['@MeasureDimension']
+          var quarterValue = cQuarter + '/' + rawValue
           
           quarterArray.push(quarterValue)
       })
@@ -140,12 +140,16 @@
         
           var cDimension = dp2['19929390-5897-4181-9551-350442615312']
           var cQuarter = cDimension['description']
-            
+          
+          let year_plus_1 = toString(Number(cQuarter.substring(0, 3)) + 1) + '.' + cQuarter.substring(5, 6)
+          
+        
           // Get the description & formattedValue from the measures (@MeasureDimension)
-          var { formattedValue, description } = dp2['@MeasureDimension']
+          var { rawValue, description } = dp2['@MeasureDimension']
               
           console.log(cQuarter)
-          console.log(formattedValue)
+          console.log(rawValue)
+          console.log(year_plus_1)
         
       }) // END of loop --> resultSet.forEach(dp => {
     
@@ -164,6 +168,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV7)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV8)
   
 })() // END of function --> (function () {
