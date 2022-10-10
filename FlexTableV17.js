@@ -157,21 +157,15 @@
           console.log(cQuarter)
           console.log(rawValue)
           console.log(year_plus_1)
-          console.log(position)
         
-// https://stackoverflow.com/questions/60440139/check-if-a-string-contains-exact-match        
-let expect = 'i was sent'
-let entry = 'i was sente to earth' // should return false
-// let entry = 'to earth i was sent' should return true
-
-// includes() using the first instance of the entry returns true
-if(entry.includes(expect)){
-console.log('exact match')
-
-} else {
-console.log('no matches')
-
-}
+          for (index in quarterArray) {
+            if (quarterArray[index].includes(year_plus_1)) {
+              position = index
+              console.log(position)
+              console.log(quarterArray[index])
+              break
+            }
+          }
         
       }) // END of loop --> resultSet.forEach(dp => {
     
@@ -190,6 +184,6 @@ console.log('no matches')
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV16)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV17)
   
 })() // END of function --> (function () {
