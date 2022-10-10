@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV21 extends HTMLElement {
+  class FlexTableV22 extends HTMLElement {
     constructor () {
       super()
 
@@ -144,7 +144,7 @@
           let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7) 
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
-          var { rawValue, description } = dp2['@MeasureDimension']
+          var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
               
           console.log(cQuarter)
           console.log(rawValue)
@@ -202,6 +202,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV21)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV22)
   
 })() // END of function --> (function () {
