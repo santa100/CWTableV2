@@ -136,14 +136,14 @@
       resultSet.forEach(dp2 => {
           console.log(dp2)
         
-          //////var cDimension = dp2['19929390-5897-4181-9551-350442615312']
-          //////var cQuarter = cDimension['description']
+          cDimension = dp2['19929390-5897-4181-9551-350442615312']
+          cQuarter = cDimension['description']
             
           // Get the description & formattedValue from the measures (@MeasureDimension)
           //////var { formattedValue, description } = dp2['@MeasureDimension']
               
-          //////console.log(cQuarter)
-          //////console.log(formattedValue)
+          console.log(cQuarter)
+          console.log(formattedValue)
         
       }) // END of loop --> resultSet.forEach(dp => {
     
