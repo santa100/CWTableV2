@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV15 extends HTMLElement {
+  class FlexTableV16 extends HTMLElement {
     constructor () {
       super()
 
@@ -143,7 +143,7 @@
           
           let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7)
           
-          let position = quarterArray.findIndex(year_plus_1)
+          let position = quarterArray.indexOf(year_plus_1)
           
           if (position>0)
           {
@@ -158,6 +158,11 @@
           console.log(rawValue)
           console.log(year_plus_1)
           console.log(position)
+        
+          var numberList = [100,200,300,400,500];
+          var index = numberList.indexOf(200); // 1
+          console.log(index)
+          console.log(numberList[index])
         
       }) // END of loop --> resultSet.forEach(dp => {
     
@@ -176,6 +181,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV15)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV16)
   
 })() // END of function --> (function () {
