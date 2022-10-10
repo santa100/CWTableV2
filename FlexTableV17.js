@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV16 extends HTMLElement {
+  class FlexTableV17 extends HTMLElement {
     constructor () {
       super()
 
@@ -159,10 +159,19 @@
           console.log(year_plus_1)
           console.log(position)
         
-          var numberList = [100,200,300,400,500];
-          var index = numberList.indexOf(200); // 1
-          console.log(index)
-          console.log(numberList[index])
+// https://stackoverflow.com/questions/60440139/check-if-a-string-contains-exact-match        
+let expect = 'i was sent'
+let entry = 'i was sente to earth' // should return false
+// let entry = 'to earth i was sent' should return true
+
+// includes() using the first instance of the entry returns true
+if(entry.includes(expect)){
+console.log('exact match')
+
+} else {
+console.log('no matches')
+
+}
         
       }) // END of loop --> resultSet.forEach(dp => {
     
