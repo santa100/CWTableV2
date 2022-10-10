@@ -142,8 +142,8 @@
           // Get the description & formattedValue from the measures (@MeasureDimension)
           //////var { formattedValue, description } = dp2['@MeasureDimension']
               
-          console.log(cQuarter)
-          console.log(formattedValue)
+          //////console.log(cQuarter)
+          //////console.log(formattedValue)
         
       }) // END of loop --> resultSet.forEach(dp => {
     
