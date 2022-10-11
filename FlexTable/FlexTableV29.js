@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV28 extends HTMLElement {
+  class FlexTableV29 extends HTMLElement {
     constructor () {
       super()
 
@@ -161,8 +161,8 @@
               
               let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                            // 2x decimal places
-              cDiffNumber = cDiffNumber.format(3, ',', '.')               // const number = 1234567890.12;  -->  1,234,567,890.12
-              cDiff = String(cDiffNumber)
+              ///cDiffNumber = cDiffNumber.toLocaleString()              // const number = 1234567890.12;  -->  1,234,567,890.12
+              cDiff = cDiffNumber.toLocaleString()    //String(cDiffNumber)
               
               console.log(year_plus_1_value)
               console.log(cDiff)
@@ -214,6 +214,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV28)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV29)
   
 })() // END of function --> (function () {
