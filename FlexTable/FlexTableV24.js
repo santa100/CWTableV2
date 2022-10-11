@@ -49,7 +49,7 @@
         position:relative;
       }
       #table-scroll {
-        height:500px;
+        height:200px;
         overflow:auto;  
         margin-top:20px;
       }
@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV23 extends HTMLElement {
+  class FlexTableV24 extends HTMLElement {
     constructor () {
       super()
 
@@ -156,7 +156,11 @@
               console.log(position)
               console.log(quarterArray[index])
               let year_plus_1_value = quarterArray[index].substring(8, 20)
+              
+              let diff = String(Number(year_plus_1_value) - Number(rawValue))
+              
               console.log(year_plus_1_value)
+              console.log(diff)
               break
             }
           }
@@ -204,6 +208,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV23)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV24)
   
 })() // END of function --> (function () {
