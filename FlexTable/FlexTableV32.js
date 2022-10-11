@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV31 extends HTMLElement {
+  class FlexTableV32 extends HTMLElement {
     constructor () {
       super()
 
@@ -163,12 +163,16 @@
               let year_plus_1_value = quarterArray[index].substring(8, 20)
               
               let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
-              cDiffNumber = cDiffNumber.toFixed(2)                            // 2x decimal places
-              ///cDiffNumber = cDiffNumber.toLocaleString()              // const number = 1234567890.12;  -->  1,234,567,890.12
-              cDiff = toCommas(cDiffNumber)
+              cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+              
+              let cPercentage = String(100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))) + '%'
+              
+              cDiffNumber = cDiffNumber * -1
+              cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
               
               console.log(year_plus_1_value)
               console.log(cDiff)
+              console.log(cPercentage)
               break
             }
           }
@@ -218,6 +222,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV31)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV32)
   
 })() // END of function --> (function () {
