@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV32 extends HTMLElement {
+  class FlexTableV33 extends HTMLElement {
     constructor () {
       super()
 
@@ -108,7 +108,7 @@
       
       // Table Headers & Body
       table_output += '<table><thead><tr><th>Quarters</th>'
-      table_output += '<th>Gross Margin</th><th>Difference</th></tr></thead><tbody>'
+      table_output += '<th>Gross Margin</th><th>Difference</th><th>%</th></tr></thead><tbody>'
       
       // initialize counter of cells
       var counterCells = 1
@@ -154,6 +154,7 @@
           console.log(year_plus_1)
         
           var cDiff = '-'
+          var cPercentage = '-' 
         
           for (var index=0; index<quarterArray.length; index++) {
             if (quarterArray[index].includes(year_plus_1)) {
@@ -165,7 +166,9 @@
               let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
               
-              let cPercentage = String(100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))) + '%'
+              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))
+              cPercentageNumber = cPercentageNumber.toFixed(2)
+              cPercentage = String(cPercentageNumber) + '%'
               
               cDiffNumber = cDiffNumber * -1
               cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
@@ -194,6 +197,7 @@
              // Write into table all measures at once
             table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cPercentage +'</font></td>'
 
             // Close each row
             table_output += '</tr>'
@@ -222,6 +226,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV32)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV33)
   
 })() // END of function --> (function () {
