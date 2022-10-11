@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV24 extends HTMLElement {
+  class FlexTableV25 extends HTMLElement {
     constructor () {
       super()
 
@@ -105,7 +105,7 @@
       
       // Table Headers & Body
       table_output += '<table><thead><tr><th>Quarters</th>'
-      table_output += '<th>Gross Margin</th></tr></thead><tbody>'
+      table_output += '<th>Gross Margin</th><th>Difference</th></tr></thead><tbody>'
       
       // initialize counter of cells
       var counterCells = 1
@@ -150,6 +150,8 @@
           console.log(rawValue)
           console.log(year_plus_1)
         
+          var cDiff = '-'
+        
           for (var index=0; index<quarterArray.length; index++) {
             if (quarterArray[index].includes(year_plus_1)) {
               let position = index
@@ -157,10 +159,10 @@
               console.log(quarterArray[index])
               let year_plus_1_value = quarterArray[index].substring(8, 20)
               
-              let diff = String(Number(year_plus_1_value) - Number(rawValue))
+              diff = String(Number(year_plus_1_value) - Number(rawValue))
               
               console.log(year_plus_1_value)
-              console.log(diff)
+              console.log(cDiff)
               break
             }
           }
@@ -181,6 +183,7 @@
             table_output += '<td><font style="font-size:12px;">'+ cQuarter +'</font></td>'
              // Write into table all measures at once
             table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
 
             // Close each row
             table_output += '</tr>'
@@ -208,6 +211,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV24)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV25)
   
 })() // END of function --> (function () {
