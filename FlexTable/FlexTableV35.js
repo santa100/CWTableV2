@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV34 extends HTMLElement {
+  class FlexTableV35 extends HTMLElement {
     constructor () {
       super()
 
@@ -108,7 +108,7 @@
       
       // Table Headers & Body
       table_output += '<table><thead><tr><th>Quarters</th>'
-      table_output += '<th>Gross Margin</th><th>Difference</th><th>%</th></tr></thead><tbody>'
+      table_output += '<th>Gross Margin</th><th>Difference</th><th>Δ%</th></tr></thead><tbody>'
       
       // initialize counter of cells
       var counterCells = 1
@@ -226,6 +226,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV34)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV35)
   
 })() // END of function --> (function () {
