@@ -78,7 +78,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableV29 extends HTMLElement {
+  class FlexTableV30 extends HTMLElement {
     constructor () {
       super()
 
@@ -162,7 +162,7 @@
               let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                            // 2x decimal places
               ///cDiffNumber = cDiffNumber.toLocaleString()              // const number = 1234567890.12;  -->  1,234,567,890.12
-              cDiff = cDiffNumber.toLocaleString()    //String(cDiffNumber)
+              cDiff = toCommas(cDiffNumber)
               
               console.log(year_plus_1_value)
               console.log(cDiff)
@@ -208,12 +208,18 @@
       // to avoid memory issues, release from memory the huge HTML string (table_output)
       table_output = ''
       
-    } // END of method --> render 
+    } // END of method --> render
+    
+    function toCommas(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+    
   } // END of class myNewTable
   
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablev1', FlexTableV29)
+  customElements.define('com-sap-sample-flextablev1', FlexTableV30)
   
 })() // END of function --> (function () {
