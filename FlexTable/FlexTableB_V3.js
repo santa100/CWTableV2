@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V2 extends HTMLElement {
+  class FlexTableB_V3 extends HTMLElement {
     constructor () {
       super()
 
@@ -134,8 +134,8 @@
           monthArray.push(monthValue)
       })
       
-      console.log('quarterArray:')
-      console.log(quarterArray)
+      console.log('monthArray:')
+      console.log(monthArray)
       
       console.log('----------------')
 
@@ -145,42 +145,25 @@
           var cDimension = dp2['Order_Date']
           var cOrderDate = cDimension['description']
           
-          let year_plus_1 = String(Number(cQuarter.substring(0, 4)) + 1) + '.' + cQuarter.substring(5, 7) 
+          let current_month = Number(cOrderDate.substring(5, 7))
+          let month_plus_n = current_month + nmonths
+          
+          if (month_plus_n > 12)
+            month_plus_n = month_plus_n - 12
+          }
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
               
           console.log(cOrderDate)
           console.log(rawValue)
-          console.log(year_plus_1)
+          console.log(month_plus_n)
+          console.log(monthArray[month_plus_n])
         
           var cDiff = '-'
           var cPercentage = '-' 
         
-          for (var index=0; index<monthArray.length; index++) {
-            if (monthArray[index].includes(year_plus_1)) {
-              let position = index
-              console.log(position)
-              console.log(monthArray[index])
-              let year_plus_1_value = monthArray[index].substring(8, 20)
-              
-              let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
-              cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
-              
-              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))
-              cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
-              cPercentage = String(cPercentageNumber) + '%'
-              
-              cDiffNumber = cDiffNumber * -1
-              cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
-              
-              console.log(year_plus_1_value)
-              console.log(cDiff)
-              console.log(cPercentage)
-              break
-            }
-          }
-        
+
           // First cell
           if (counterCells === 1)
           {
