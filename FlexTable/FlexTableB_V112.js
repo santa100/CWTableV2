@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V11 extends HTMLElement {
+  class FlexTableB_V12 extends HTMLElement {
     constructor () {
       super()
 
@@ -134,8 +134,12 @@
           monthArray.push(monthValue)
       })
       
-      console.log('monthArray:')
-      console.log(monthArray)
+      //console.log('monthArray:')
+      //console.log(monthArray)
+      
+      console.log('type='+type)
+      console.log('nmonths='+nmonths)
+      console.log('timerange='+timerange)
       
       console.log('----------------')
 
@@ -149,7 +153,7 @@
           
           if (type === 'Future')
           {
-            let month_plus_n = current_month + nmonths
+            var month_plus_n = current_month + nmonths
             
             let year_txt = cOrderDate.substring(0, 4)
 
@@ -160,7 +164,7 @@
               year_txt = String(year)
             }
           } else {
-            let month_plus_n = current_month - nmonths
+            var month_plus_n = current_month - nmonths
             
              if (month_plus_n <= 0)
             {
@@ -232,6 +236,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V11)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V12)
   
 })() // END of function --> (function () {
