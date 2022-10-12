@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V21 extends HTMLElement {
+  class FlexTableB_V22 extends HTMLElement {
     constructor () {
       super()
 
@@ -187,6 +187,10 @@
           var cDiff = '-'
           var cPercentage = '-' 
           
+          // Get the description & formattedValue from the measures (@MeasureDimension)
+          var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
+          
+          // Search for dates with array (monthArray) and get the future (or past) value and calculate the difference and percentage
           for (var index=0; index<monthArray.length; index++) {
             if (monthArray[index].includes(newdDate)) {
               console.log('BINGO')
@@ -212,17 +216,10 @@
               // Break or stop the for cycle
               break
             }
-          }          
-          
-          
-          // Get the description & formattedValue from the measures (@MeasureDimension)
-          var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
+          }
               
-          console.log('O:'+cOrderDate)
-          console.log('N:'+newdDate)
-          /////////////console.log(monthArray[month_plus_n])
-        
-
+          //console.log('O:'+cOrderDate)
+          //console.log('N:'+newdDate)
         
           cValueGM = formattedValue
 
@@ -267,6 +264,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V21)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V22)
   
 })() // END of function --> (function () {
