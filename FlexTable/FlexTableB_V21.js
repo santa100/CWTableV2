@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V20 extends HTMLElement {
+  class FlexTableB_V21 extends HTMLElement {
     constructor () {
       super()
 
@@ -190,10 +190,13 @@
           for (var index=0; index<monthArray.length; index++) {
             if (monthArray[index].includes(newdDate)) {
               console.log('BINGO')
+              console.log('DATE TO SEARCH IS ' + newdDate)
+              console.log('FOUNDED WITH ' + monthArray[index])
               
               let position = index
               let year_plus_1_value = monthArray[index].substring(11, 30)
-              console.log('VALUE:'+year_plus_1_value)
+              console.log('VALUE:' + year_plus_1_value)
+              console.log('TO COMPARE VALUE:' + rawValue)
               
               var cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
@@ -264,6 +267,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V20)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V21)
   
 })() // END of function --> (function () {
