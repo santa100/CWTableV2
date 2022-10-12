@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V15 extends HTMLElement {
+  class FlexTableB_V16 extends HTMLElement {
     constructor () {
       super()
 
@@ -154,6 +154,8 @@
           var cDimension = dp2['Order_Date']
           var cOrderDate = cDimension['id']
           
+          
+          
           let current_month = Number(cOrderDate.substring(5, 7))
           var year_txt = cOrderDate.substring(0, 4)
           
@@ -182,7 +184,31 @@
           if (month_plus_n_txt.length === 1) {month_plus_n_txt = '0' + month_plus_n_txt}
         
           let newdDate = year_txt + '-' + month_plus_n_txt + '-' + cOrderDate.substring(8, 10)
-        
+          
+          var cDiff = '-'
+          var cPercentage = '-' 
+          
+          for (var index=0; index<monthArray.length; index++) {
+            if (monthArray[index].includes(newdDate)) {
+              let position = index
+              let year_plus_1_value = monthArray[index].substring(8, 20)
+              
+              let cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
+              cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+              
+              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))
+              cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
+              cPercentage = String(cPercentageNumber) + '%'
+              
+              cDiffNumber = cDiffNumber * -1
+              cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
+              
+              // Break or stop the for cycle
+              break
+            }
+          }          
+          
+          
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
               
@@ -190,8 +216,7 @@
           console.log('N:'+newdDate)
           /////////////console.log(monthArray[month_plus_n])
         
-          var cDiff = '-'
-          var cPercentage = '-' 
+
         
           cValueGM = formattedValue
 
@@ -205,9 +230,9 @@
             table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cDiffNumber +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cPercentage +'</font></td>'
 
             // Close each row
             table_output += '</tr>'
@@ -236,6 +261,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V15)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V16)
   
 })() // END of function --> (function () {
