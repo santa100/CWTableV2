@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V22 extends HTMLElement {
+  class FlexTableB_V23 extends HTMLElement {
     constructor () {
       super()
 
@@ -186,6 +186,7 @@
           
           var cDiff = '-'
           var cPercentage = '-' 
+          var new_value = '-'
           
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
@@ -198,11 +199,11 @@
               console.log('FOUNDED WITH ' + monthArray[index])
               
               let position = index
-              let year_plus_1_value = monthArray[index].substring(11, 30)
-              console.log('VALUE:' + year_plus_1_value)
+              new_value = monthArray[index].substring(11, 30)
+              console.log('VALUE:' + new_value)
               console.log('TO COMPARE VALUE:' + rawValue)
               
-              var cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
+              var cDiffNumber = Number(new_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
               console.log('DIFERENCE:'+cDiffNumber)
               
@@ -233,7 +234,7 @@
             table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cDiffNumber +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cPercentage +'</font></td>'
 
@@ -264,6 +265,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V22)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V23)
   
 })() // END of function --> (function () {
