@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V17 extends HTMLElement {
+  class FlexTableB_V18 extends HTMLElement {
     constructor () {
       super()
 
@@ -139,8 +139,8 @@
           monthArray.push(monthValue)
       })
       
-      //console.log('monthArray:')
-      //console.log(monthArray)
+      console.log('monthArray:')
+      console.log(monthArray)
       
       //console.log('type='+type)
       //console.log('nmonths='+nmonths)
@@ -153,7 +153,6 @@
         
           var cDimension = dp2['Order_Date']
           var cOrderDate = cDimension['id']
-          
           
           
           let current_month = Number(cOrderDate.substring(5, 7))
@@ -261,6 +260,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V17)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V18)
   
 })() // END of function --> (function () {
