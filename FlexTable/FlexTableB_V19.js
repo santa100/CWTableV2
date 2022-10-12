@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V18 extends HTMLElement {
+  class FlexTableB_V19 extends HTMLElement {
     constructor () {
       super()
 
@@ -189,11 +189,15 @@
           
           for (var index=0; index<monthArray.length; index++) {
             if (monthArray[index].includes(newdDate)) {
+              console.log('BINGO')
+              
               let position = index
               let year_plus_1_value = monthArray[index].substring(8, 20)
+              console.log('VALUE:'+year_plus_1_value)
               
               var cDiffNumber = Number(year_plus_1_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+              Console.log('DIFERENCE:'+cDiffNumber)
               
               let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))
               cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
@@ -260,6 +264,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V18)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V19)
   
 })() // END of function --> (function () {
