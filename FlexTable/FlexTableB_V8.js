@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V7 extends HTMLElement {
+  class FlexTableB_V8 extends HTMLElement {
     constructor () {
       super()
 
@@ -153,7 +153,10 @@
             month_plus_n = month_plus_n - 12
           }
         
-          let newdDate = cOrderDate.substring(0, 4) + '-' + String(month_plus_n) + '-' + cOrderDate.substring(8, 9)
+          let month_plus_n_txt = String(month_plus_n)
+          if (month_plus_n_txt === 1) {month_plus_n_txt = '0' + month_plus_n_txt}
+        
+          let newdDate = cOrderDate.substring(0, 4) + '-' + month_plus_n_txt + '-' + cOrderDate.substring(8, 10)
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
@@ -214,6 +217,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V7)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V8)
   
 })() // END of function --> (function () {
