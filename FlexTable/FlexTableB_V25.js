@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V24 extends HTMLElement {
+  class FlexTableB_V25 extends HTMLElement {
     constructor () {
       super()
 
@@ -139,8 +139,8 @@
           monthArray.push(monthValue)
       })
       
-      console.log('monthArray:')
-      console.log(monthArray)
+      //console.log('monthArray:')
+      //console.log(monthArray)
       
       //console.log('type='+type)
       //console.log('nmonths='+nmonths)
@@ -194,18 +194,11 @@
           // Search for dates with array (monthArray) and get the future (or past) value and calculate the difference and percentage
           for (var index=0; index<monthArray.length; index++) {
             if (monthArray[index].includes(newdDate)) {
-              console.log('BINGO')
-              console.log('DATE TO SEARCH IS ' + newdDate)
-              console.log('FOUNDED WITH ' + monthArray[index])
-              
               let position = index
               new_value = monthArray[index].substring(11, 30)
-              console.log('VALUE:' + new_value)
-              console.log('TO COMPARE VALUE:' + rawValue)
               
               var cDiffNumber = Number(new_value) - Number(rawValue)
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
-              console.log('DIFERENCE:'+cDiffNumber)
               
               let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
               cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
@@ -213,6 +206,7 @@
               
               cDiffNumber = cDiffNumber * -1
               cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
+              new_value = toCommas(new_value) 
               
               // Break or stop the for cycle
               break
@@ -265,6 +259,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V24)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V25)
   
 })() // END of function --> (function () {
