@@ -49,7 +49,7 @@
         position:relative;
       }
       #table-scroll {
-        height:200px;
+        height:350px;
         overflow:auto;  
         margin-top:20px;
       }
@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V14 extends HTMLElement {
+  class FlexTableB_V15 extends HTMLElement {
     constructor () {
       super()
 
@@ -107,9 +107,14 @@
       var table_output = '<div id="table-wrapper"><div id="table-scroll">'
       
       // Table Headers & Body
-      table_output += '<table><thead><tr><th>Order Date</th>'
-      table_output += '<th>Gross Margin</th><th>Difference</th><th>Δ%</th></tr></thead><tbody>'
-      
+      table_output += '<table><thead><tr><th>Order Date</th><th>Gross Margin</th>'
+      if (type === 'Future')
+      {
+        table_output += '<th>Future Date</th><th>Future Gross Margin</th><th>Difference</th><th>Δ%</th></tr></thead><tbody>'
+      } else {
+        table_output += '<th>Past Date</th><th>Past Gross Margin</th><th>Difference</th><th>Δ%</th></tr></thead><tbody>'
+      }
+        
       // initialize counter of cells
       var counterCells = 1
       
@@ -137,9 +142,9 @@
       //console.log('monthArray:')
       //console.log(monthArray)
       
-      console.log('type='+type)
-      console.log('nmonths='+nmonths)
-      console.log('timerange='+timerange)
+      //console.log('type='+type)
+      //console.log('nmonths='+nmonths)
+      //console.log('timerange='+timerange)
       
       console.log('----------------')
 
@@ -188,28 +193,24 @@
           var cDiff = '-'
           var cPercentage = '-' 
         
+          cValueGM = formattedValue
 
-          // First cell
-          if (counterCells === 1)
-          {
-              cValueGM = formattedValue
-          }
-
-          // Increment the cells counter
+          // Increment the cells counter (based on the number of neasures)
           counterCells = counterCells + 1
      
           // Reset the counter for each row
           if (counterCells>1) 
           {
-            // Write into table all dimensions at once (one go only)
-            /////////////table_output += '<td><font style="font-size:12px;">'+ cQuarter +'</font></td>'
-             // Write into table all measures at once
-            /////////////table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
-            /////////////table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
-            /////////////table_output += '<td><font style="font-size:12px;">'+ cPercentage +'</font></td>'
+            // Write into table all dimensions & measures at once (one go only)
+            table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
+            table_output += '<td><font style="font-size:12px;">'+ ' ' +'</font></td>'
 
             // Close each row
-            ///////////// table_output += '</tr>'
+            table_output += '</tr>'
 
             // Moved into a different country and
             // Reset the counter, to start a new row
@@ -220,10 +221,10 @@
       }) // END of loop --> resultSet.forEach(dp => {
     
       //Close all used tags
-      /////////////table_output += '</tbody></table></div></div>'
+      table_output += '</tbody></table></div></div>'
     
       // replace above element "my_data" with the HTML table output (final HTML table built above)
-      /////////////this._shadowRoot.getElementById('my_data').innerHTML = table_output
+      this._shadowRoot.getElementById('my_data').innerHTML = table_output
       
       // to avoid memory issues, release from memory the huge HTML string (table_output)
       table_output = ''
@@ -235,6 +236,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V14)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V15)
   
 })() // END of function --> (function () {
