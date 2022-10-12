@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V3 extends HTMLElement {
+  class FlexTableB_V4 extends HTMLElement {
     constructor () {
       super()
 
@@ -95,7 +95,7 @@
     // ------------------
     // Scripting methods
     // ------------------
-    async render (resultSet, type, nmonths) {
+    async render (resultSet, type, nmonths, timerange) {
       
       this._placeholder = this._root.querySelector('#placeholder')
       if (this._placeholder) {
@@ -149,16 +149,18 @@
           let month_plus_n = current_month + nmonths
           
           if (month_plus_n > 12)
+          {
             month_plus_n = month_plus_n - 12
           }
+        
+          let newdDate = cOrderDate.substring(0, 4) + '-' + String(month_plus_n) + '-' + cOrderDate.substring(8, 9)
         
           // Get the description & formattedValue from the measures (@MeasureDimension)
           var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
               
           console.log(cOrderDate)
-          console.log(rawValue)
-          console.log(month_plus_n)
-          console.log(monthArray[month_plus_n])
+          console.log(newdDate)
+          /////////////console.log(monthArray[month_plus_n])
         
           var cDiff = '-'
           var cPercentage = '-' 
@@ -212,6 +214,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V2)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V4)
   
 })() // END of function --> (function () {
