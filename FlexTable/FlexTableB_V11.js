@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V10 extends HTMLElement {
+  class FlexTableB_V11 extends HTMLElement {
     constructor () {
       super()
 
@@ -146,15 +146,28 @@
           var cOrderDate = cDimension['id']
           
           let current_month = Number(cOrderDate.substring(5, 7))
-          let month_plus_n = current_month + nmonths
           
-          let year_txt = cOrderDate.substring(0, 4)
-          
-          if (month_plus_n > 12)
+          if (type === 'Future')
           {
-            month_plus_n = month_plus_n - 12
-            let year = Number(year_txt) + 1
-            year_txt = String(year)
+            let month_plus_n = current_month + nmonths
+            
+            let year_txt = cOrderDate.substring(0, 4)
+
+            if (month_plus_n > 12)
+            {
+              month_plus_n = month_plus_n - 12
+              let year = Number(year_txt) + 1
+              year_txt = String(year)
+            }
+          } else {
+            let month_plus_n = current_month - nmonths
+            
+             if (month_plus_n <= 0)
+            {
+              month_plus_n = month_plus_n + 12
+              let year = Number(year_txt) - 1
+              year_txt = String(year)
+            }           
           }
         
           let month_plus_n_txt = String(month_plus_n)
@@ -219,6 +232,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V10)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V11)
   
 })() // END of function --> (function () {
