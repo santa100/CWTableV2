@@ -81,7 +81,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V23 extends HTMLElement {
+  class FlexTableB_V24 extends HTMLElement {
     constructor () {
       super()
 
@@ -207,7 +207,7 @@
               cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
               console.log('DIFERENCE:'+cDiffNumber)
               
-              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(year_plus_1_value))
+              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
               cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
               cPercentage = String(cPercentageNumber) + '%'
               
@@ -265,6 +265,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V23)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V24)
   
 })() // END of function --> (function () {
