@@ -84,7 +84,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V32 extends HTMLElement {
+  class FlexTableB_V33 extends HTMLElement {
     constructor () {
       super()
 
@@ -232,6 +232,7 @@
               var cDiff = '-'
               var cPercentage = '-' 
               var new_value = '-'
+              var indexdate = 0
 
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
@@ -242,38 +243,64 @@
               for (index=0; index<dataArray.length; index++) {
                 if (dataArray[index].includes(newdDate)) {
                     foundtheDate = true
-                    console.log("BINGO >>>" + dataArray[index])
+                    indexdate = index
                 }
                 
-                if (foundtheDate && dataArray[index].includes(newdDate) === false)
+                if (type === 'Future')
                 {
-                  counterofDates = counterofDates + 1
-                  console.log("inside of foundtheDate if statment")
-                  
-                  if (counterofDates === timecounter)
-                      {
-                          console.log("inside >>>"+dataArray[index])
-                          newdDate  = dataArray[index].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
-                          new_value = dataArray[index].substring(11, 30)
+                    if (foundtheDate && dataArray[index].includes(newdDate) === false)
+                    {
+                      counterofDates = counterofDates + 1
 
-                          var cDiffNumber = Number(new_value) - Number(rawValue)
-                          cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
+                      if (counterofDates === timecounter)
+                          {
+                              newdDate  = dataArray[index].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
+                              new_value = dataArray[index].substring(11, 30)
 
-                          let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
-                          cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
-                          cPercentage = String(cPercentageNumber) + '%'
+                              var cDiffNumber = Number(new_value) - Number(rawValue)
+                              cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
 
-                          cDiffNumber = cDiffNumber * -1
-                          cDiff = toCommas(cDiffNumber)                         // from number = 1234567890.12  to  1,234,567,890.12
-                          new_value = toCommas(new_value)                           
-                          // Break and stop the for loop cycle
-                          break                        
-                      }
+                              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                              cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
+                              cPercentage = String(cPercentageNumber) + '%'
+
+                              cDiffNumber = cDiffNumber * -1
+                              cDiff = toCommas(cDiffNumber)                         // from number = 1234567890.12  to  1,234,567,890.12
+                              new_value = toCommas(new_value)                           
+                              // Break and stop the for loop cycle
+                              break                        
+                          }
+                    }
+                } else if (foundtheDate)
+                    {
+                      // Break and stop the for loop cycle
+                      break                           
+                    }
                 }
                 
-              }      
+              } // for (index=0; index<dataArray.length; index++) 
                  
-          }
+              if (type === 'Past' && indexdate !== 0)
+                {
+                    let dif = (indexdate - timecounter)
+                    if (dif > 0) {
+                      newdDate  = dataArray[dif].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
+                      new_value = dataArray[dif].substring(11, 30)
+
+                      var cDiffNumber = Number(new_value) - Number(rawValue)
+                      cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
+
+                      let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                      cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
+                      cPercentage = String(cPercentageNumber) + '%'
+
+                      cDiffNumber = cDiffNumber * -1
+                      cDiff = toCommas(cDiffNumber)                         // from number = 1234567890.12  to  1,234,567,890.12
+                      new_value = toCommas(new_value)                        
+                    }
+                    
+                } //  if (type === 'Past' && indexdate !== 0)
+          } // else if (timerange === 'Days')
 
           // Increment the cells counter (based on the number of neasures)
           counterCells = counterCells + 1
@@ -317,6 +344,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V32)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V33)
   
 })() // END of function --> (function () {
