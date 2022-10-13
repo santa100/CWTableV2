@@ -17,11 +17,11 @@
       ///////////////////////////////////////////////////////////////
       
       .myLightGreen {
-       background-color: #e1f5e1;
+         color: #e1f5e1;
       }
 
       .myLightRed {
-       background-color: #fcd9e1;
+         color: #fcd9e1;
       }
 
       table {
@@ -92,7 +92,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V38 extends HTMLElement {
+  class FlexTableB_V39 extends HTMLElement {
     constructor () {
       super()
 
@@ -328,7 +328,7 @@
             {
                 table_output += '<td class="myLightGreen"><font style="font-size:12px;">▴'+ cPercentage +'</font></td>'
             } else {
-                table_output += '<td class="myLightRed"><font style="font-size:12px;">▴'+ cPercentage +'</font></td>'
+                table_output += '<td class="myLightRed"><span style="font-size:14px;">▴</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
             }
 
             // Close each row
@@ -359,6 +359,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V38)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V39)
   
 })() // END of function --> (function () {
