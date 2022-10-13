@@ -74,6 +74,9 @@
         <div id="my_data">...</div>
       </div>
     `
+    
+    // Function to FORMAT a number properly with comas (,) and dot (.)
+    // Expected FORMAT: 1,234,567,890.12
     function toCommas(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -124,12 +127,12 @@
       console.log('----------------')
       
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-      // Loop through the resultset delivered from the backend vvvvvvvvvvvv
+      // Loop through the resultset delivered from the backend                   vvvvvvvvvvvv
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 
       
-      var monthArray = []
+      var dataArray = []
 
-      // Retrieve into array: monthArray all necessary dates & rawvalue to be used later on the next forEach loop logic
+      // Retrieve into array: dataArray all necessary dates & rawvalue to be used later on the next forEach loop logic
       resultSet.forEach(dp1 => {
           //console.log(dp1)
           var cDimension = dp1['Order_Date']
@@ -137,11 +140,11 @@
           var { rawValue, description } = dp1['@MeasureDimension']
           var monthValue = cOrderDate + '/' + rawValue
           
-          monthArray.push(monthValue)
+          dataArray.push(monthValue)
       })
       
-      //console.log('monthArray:')
-      //console.log(monthArray)
+      //console.log('dataArray:')
+      //console.log(dataArray)
       
       //console.log('type='+type)
       //console.log('nmonths='+nmonths)
@@ -194,11 +197,11 @@
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
 
-              // Search for dates with array (monthArray) and get the future (or past) value and calculate the difference and percentage
-              for (var index=0; index<monthArray.length; index++) {
-                if (monthArray[index].includes(newdDate)) {
+              // Search for dates with array (dataArray) and get the future (or past) value and calculate the difference and percentage
+              for (var index=0; index<dataArray.length; index++) {
+                if (dataArray[index].includes(newdDate)) {
                   let position = index
-                  new_value = monthArray[index].substring(11, 30)
+                  new_value = dataArray[index].substring(11, 30)
 
                   var cDiffNumber = Number(new_value) - Number(rawValue)
                   cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
@@ -222,7 +225,28 @@
               cValueGM = formattedValue
           } else if (timerange === 'Days')
           {
-              
+              newdDate = cOrderDate
+              counterofDates = 0
+              let foundtheDate = false
+              // Search for the each current date in array (dataArray) to get the postion to start the coun to days in the next loop
+              for (index=0; index<dataArray.length; index++) {
+                if (dataArray[index].includes(newdDate)) {
+                    foundtheDate = true             
+                }
+                
+                if (foundtheDate && !dataArray[index].includes(newdDate))
+                {
+                  counterofDates = counterofDates + 1
+                  if (counterofDates === nmonths)
+                      {
+                          
+                          // Break and stop the for loop cycle
+                          break                        
+                      }
+                }
+                
+              }      
+                 
           }
 
           // Increment the cells counter (based on the number of neasures)
@@ -256,9 +280,9 @@
       // replace above element "my_data" with the HTML table output (final HTML table built above)
       this._shadowRoot.getElementById('my_data').innerHTML = table_output
       
-      // to avoid memory issues, release from memory the huge HTML string (table_output) and the necessary array: monthArray
+      // to avoid memory issues, release from memory the huge HTML string (table_output) and the necessary array: dataArray
       table_output = ''
-       monthArray = []
+      dataArray = []
       
     } // END of method --> render
     
