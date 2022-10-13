@@ -84,7 +84,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V31 extends HTMLElement {
+  class FlexTableB_V32 extends HTMLElement {
     constructor () {
       super()
 
@@ -225,7 +225,7 @@
               cValueGM = formattedValue
           } else if (timerange === 'Days')
           {
-              //var newdDate = cOrderDate
+              var newdDate = cOrderDate
               let counterofDates = 0
               let foundtheDate = false
               
@@ -253,7 +253,7 @@
                   if (counterofDates === timecounter)
                       {
                           console.log("inside >>>"+dataArray[index])
-                          var newdDate  = dataArray[index].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
+                          newdDate  = dataArray[index].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
                           new_value = dataArray[index].substring(11, 30)
 
                           var cDiffNumber = Number(new_value) - Number(rawValue)
@@ -317,6 +317,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V31)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V32)
   
 })() // END of function --> (function () {
