@@ -84,7 +84,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V30 extends HTMLElement {
+  class FlexTableB_V31 extends HTMLElement {
     constructor () {
       super()
 
@@ -241,12 +241,14 @@
               // Search for the each current date in array (dataArray) to get the postion to start the coun to days in the next loop
               for (index=0; index<dataArray.length; index++) {
                 if (dataArray[index].includes(newdDate)) {
-                    foundtheDate = true             
+                    foundtheDate = true
+                    console.log("BINGO >>>" + dataArray[index])
                 }
                 
-                if (foundtheDate && !dataArray[index].includes(newdDate))
+                if (foundtheDate && dataArray[index].includes(newdDate) === false)
                 {
                   counterofDates = counterofDates + 1
+                  console.log("inside of foundtheDate if statment")
                   
                   if (counterofDates === timecounter)
                       {
@@ -315,6 +317,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V30)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V31)
   
 })() // END of function --> (function () {
