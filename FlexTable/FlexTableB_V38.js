@@ -16,6 +16,14 @@
       // Table CSS classes
       ///////////////////////////////////////////////////////////////
       
+      .myLightGreen {
+       background-color: #e1f5e1;
+      }
+
+      .myLightRed {
+       background-color: #fcd9e1;
+      }
+
       table {
         font-family: arial, sans-serif;
         /* font-size: 15px; */
@@ -84,7 +92,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V37 extends HTMLElement {
+  class FlexTableB_V38 extends HTMLElement {
     constructor () {
       super()
 
@@ -193,6 +201,7 @@
               var cDiff = '-'
               var cPercentage = '-' 
               var new_value = '-'
+              var cPercentageNumber = 0
 
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
@@ -206,7 +215,7 @@
                   var cDiffNumber = Number(new_value) - Number(rawValue)
                   cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
 
-                  let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                  cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
                   cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
                   cPercentage = String(cPercentageNumber) + '%'
 
@@ -233,6 +242,7 @@
               var cPercentage = '-' 
               var new_value = '-'
               var indexdate = 0
+	      var cPercentageNumber = 0
 
               // Get the description & formattedValue from the measures (@MeasureDimension)
               var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
@@ -260,7 +270,7 @@
                               var cDiffNumber = Number(new_value) - Number(rawValue)
                               cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
 
-                              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                              cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
                               cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
                               cPercentage = String(cPercentageNumber) + '%'
 
@@ -289,7 +299,7 @@
                       var cDiffNumber = Number(new_value) - Number(rawValue)
                       cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
 
-                      let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                      cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
                       cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
                       cPercentage = String(cPercentageNumber) + '%'
 
@@ -313,7 +323,13 @@
             table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
             table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cPercentage +'</font></td>'
+            
+            if (cPercentageNumber>0)
+            {
+                table_output += '<td class="myLightGreen"><font style="font-size:12px;">▴'+ cPercentage +'</font></td>'
+            } else {
+                table_output += '<td class="myLightRed"><font style="font-size:12px;">▴'+ cPercentage +'</font></td>'
+            }
 
             // Close each row
             table_output += '</tr>'
@@ -343,6 +359,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V37)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V38)
   
 })() // END of function --> (function () {
