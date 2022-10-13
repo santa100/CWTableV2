@@ -129,7 +129,7 @@
       
       var monthArray = []
 
-      // Retrive into array: monthArray all necessary dates & rawvalue to be used later on the nextt forEach loop logic
+      // Retrieve into array: monthArray all necessary dates & rawvalue to be used later on the next forEach loop logic
       resultSet.forEach(dp1 => {
           //console.log(dp1)
           var cDimension = dp1['Order_Date']
@@ -156,69 +156,74 @@
           var cDimension = dp2['Order_Date']
           var cOrderDate = cDimension['id']
           
-          
-          let current_month = Number(cOrderDate.substring(5, 7))
-          var year_txt = cOrderDate.substring(0, 4)
-          
-          if (type === 'Future')
+          if (timerange === 'Months')
           {
-            var month_plus_n = current_month + nmonths
+              let current_month = Number(cOrderDate.substring(5, 7))
+              var year_txt = cOrderDate.substring(0, 4)
 
-            if (month_plus_n > 12)
-            {
-              month_plus_n = month_plus_n - 12
-              var year = Number(year_txt) + 1
-              year_txt = String(year)
-            }
-          } else {
-            var month_plus_n = current_month - nmonths
-            
-             if (month_plus_n <= 0)
-            {
-              month_plus_n = month_plus_n + 12
-              var year = Number(year_txt) - 1
-              year_txt = String(year)
-            }           
+              if (type === 'Future')
+              {
+                var month_plus_n = current_month + nmonths
+
+                if (month_plus_n > 12)
+                {
+                  month_plus_n = month_plus_n - 12
+                  var year = Number(year_txt) + 1
+                  year_txt = String(year)
+                }
+              } else {
+                var month_plus_n = current_month - nmonths
+
+                 if (month_plus_n <= 0)
+                {
+                  month_plus_n = month_plus_n + 12
+                  var year = Number(year_txt) - 1
+                  year_txt = String(year)
+                }           
+              }
+
+              let month_plus_n_txt = String(month_plus_n)
+              if (month_plus_n_txt.length === 1) {month_plus_n_txt = '0' + month_plus_n_txt}
+
+              let newdDate = year_txt + '-' + month_plus_n_txt + '-' + cOrderDate.substring(8, 10)
+
+              var cDiff = '-'
+              var cPercentage = '-' 
+              var new_value = '-'
+
+              // Get the description & formattedValue from the measures (@MeasureDimension)
+              var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
+
+              // Search for dates with array (monthArray) and get the future (or past) value and calculate the difference and percentage
+              for (var index=0; index<monthArray.length; index++) {
+                if (monthArray[index].includes(newdDate)) {
+                  let position = index
+                  new_value = monthArray[index].substring(11, 30)
+
+                  var cDiffNumber = Number(new_value) - Number(rawValue)
+                  cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+
+                  let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                  cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
+                  cPercentage = String(cPercentageNumber) + '%'
+
+                  cDiffNumber = cDiffNumber * -1
+                  cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
+                  new_value = toCommas(new_value) 
+
+                  // Break and stop the for loop cycle
+                  break
+                }
+              }
+
+              //console.log('O:'+cOrderDate)
+              //console.log('N:'+newdDate)
+
+              cValueGM = formattedValue
+          } else if (timerange === 'Days')
+          {
+              
           }
-        
-          let month_plus_n_txt = String(month_plus_n)
-          if (month_plus_n_txt.length === 1) {month_plus_n_txt = '0' + month_plus_n_txt}
-        
-          let newdDate = year_txt + '-' + month_plus_n_txt + '-' + cOrderDate.substring(8, 10)
-          
-          var cDiff = '-'
-          var cPercentage = '-' 
-          var new_value = '-'
-          
-          // Get the description & formattedValue from the measures (@MeasureDimension)
-          var { rawValue, formattedValue, description } = dp2['@MeasureDimension']          
-          
-          // Search for dates with array (monthArray) and get the future (or past) value and calculate the difference and percentage
-          for (var index=0; index<monthArray.length; index++) {
-            if (monthArray[index].includes(newdDate)) {
-              let position = index
-              new_value = monthArray[index].substring(11, 30)
-              
-              var cDiffNumber = Number(new_value) - Number(rawValue)
-              cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
-              
-              let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
-              cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
-              cPercentage = String(cPercentageNumber) + '%'
-              
-              cDiffNumber = cDiffNumber * -1
-              cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
-              new_value = toCommas(new_value) 
-              
-              // Break or stop the for cycle
-              break
-            }
-          }
-              
-          //console.log('O:'+cOrderDate)
-          //console.log('N:'+newdDate)
-        
-          cValueGM = formattedValue
 
           // Increment the cells counter (based on the number of neasures)
           counterCells = counterCells + 1
