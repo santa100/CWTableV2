@@ -84,7 +84,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V25 extends HTMLElement {
+  class FlexTableB_V26 extends HTMLElement {
     constructor () {
       super()
 
@@ -98,7 +98,7 @@
     // ------------------
     // Scripting methods
     // ------------------
-    async render (resultSet, type, nmonths, timerange) {
+    async render (resultSet, type, timecounter, timerange) {
       
       this._placeholder = this._root.querySelector('#placeholder')
       if (this._placeholder) {
@@ -147,7 +147,7 @@
       //console.log(dataArray)
       
       //console.log('type='+type)
-      //console.log('nmonths='+nmonths)
+      //console.log('timecounter='+timecounter)
       //console.log('timerange='+timerange)
       
       console.log('----------------')
@@ -166,7 +166,7 @@
 
               if (type === 'Future')
               {
-                var month_plus_n = current_month + nmonths
+                var month_plus_n = current_month + timecounter
 
                 if (month_plus_n > 12)
                 {
@@ -175,7 +175,7 @@
                   year_txt = String(year)
                 }
               } else {
-                var month_plus_n = current_month - nmonths
+                var month_plus_n = current_month - timecounter
 
                  if (month_plus_n <= 0)
                 {
@@ -225,9 +225,19 @@
               cValueGM = formattedValue
           } else if (timerange === 'Days')
           {
-              newdDate = cOrderDate
+              let newdDate = cOrderDate
               counterofDates = 0
               let foundtheDate = false
+              
+              var cDiff = '-'
+              var cPercentage = '-' 
+              var new_value = '-'
+
+              // Get the description & formattedValue from the measures (@MeasureDimension)
+              var { rawValue, formattedValue, description } = dp2['@MeasureDimension']
+              
+              cValueGM = formattedValue
+              
               // Search for the each current date in array (dataArray) to get the postion to start the coun to days in the next loop
               for (index=0; index<dataArray.length; index++) {
                 if (dataArray[index].includes(newdDate)) {
@@ -237,9 +247,21 @@
                 if (foundtheDate && !dataArray[index].includes(newdDate))
                 {
                   counterofDates = counterofDates + 1
-                  if (counterofDates === nmonths)
+                  
+                  if (counterofDates === timecounter)
                       {
-                          
+                          let new_value = dataArray[index].substring(11, 30)
+
+                          var cDiffNumber = Number(new_value) - Number(rawValue)
+                          cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+
+                          let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
+                          cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
+                          cPercentage = String(cPercentageNumber) + '%'
+
+                          cDiffNumber = cDiffNumber * -1
+                          cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
+                          new_value = toCommas(new_value)                           
                           // Break and stop the for loop cycle
                           break                        
                       }
@@ -291,6 +313,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V25)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V26)
   
 })() // END of function --> (function () {
