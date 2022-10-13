@@ -127,8 +127,9 @@
       // Loop through the resultset delivered from the backend vvvvvvvvvvvv
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 
       
-      var monthArray = [];
+      var monthArray = []
 
+      // Retrive into array: monthArray all necessary dates & rawvalue to be used later on the nextt forEach loop logic
       resultSet.forEach(dp1 => {
           //console.log(dp1)
           var cDimension = dp1['Order_Date']
@@ -148,6 +149,7 @@
       
       console.log('----------------')
 
+      // Lopp through each value
       resultSet.forEach(dp2 => {
           //console.log(dp2)
         
@@ -249,8 +251,9 @@
       // replace above element "my_data" with the HTML table output (final HTML table built above)
       this._shadowRoot.getElementById('my_data').innerHTML = table_output
       
-      // to avoid memory issues, release from memory the huge HTML string (table_output)
+      // to avoid memory issues, release from memory the huge HTML string (table_output) and the necessary array: monthArray
       table_output = ''
+       monthArray = []
       
     } // END of method --> render
     
