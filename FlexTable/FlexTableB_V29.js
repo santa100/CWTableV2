@@ -84,7 +84,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableB_V28 extends HTMLElement {
+  class FlexTableB_V29 extends HTMLElement {
     constructor () {
       super()
 
@@ -201,7 +201,7 @@
               for (var index=0; index<dataArray.length; index++) {
                 if (dataArray[index].includes(newdDate)) {
                   let position = index
-                  new_value = dataArray[index].substring(11, 30)
+                  new_value = dataArray[index].substring(11, 30)        // NOTE EXAMPLE: 2018-01-01/1577605.34
 
                   var cDiffNumber = Number(new_value) - Number(rawValue)
                   cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
@@ -225,7 +225,7 @@
               cValueGM = formattedValue
           } else if (timerange === 'Days')
           {
-              var newdDate = cOrderDate
+              //var newdDate = cOrderDate
               let counterofDates = 0
               let foundtheDate = false
               
@@ -250,17 +250,18 @@
                   
                   if (counterofDates === timecounter)
                       {
-                          let new_value = dataArray[index].substring(11, 30)
+                          var newdDate  = dataArray[index].substring(0, 10)      // NOTE EXAMPLE: 2018-01-01/1577605.34
+                          new_value = dataArray[index].substring(11, 30)
 
                           var cDiffNumber = Number(new_value) - Number(rawValue)
-                          cDiffNumber = cDiffNumber.toFixed(2)                // only 2x decimal places
+                          cDiffNumber = cDiffNumber.toFixed(2)                  // only 2x decimal places
 
                           let cPercentageNumber = 100 - ((Number(rawValue) * 100) / Number(new_value))
                           cPercentageNumber = (cPercentageNumber.toFixed(1)) * -1
                           cPercentage = String(cPercentageNumber) + '%'
 
                           cDiffNumber = cDiffNumber * -1
-                          cDiff = toCommas(cDiffNumber)                       // from number = 1234567890.12  to  1,234,567,890.12
+                          cDiff = toCommas(cDiffNumber)                         // from number = 1234567890.12  to  1,234,567,890.12
                           new_value = toCommas(new_value)                           
                           // Break and stop the for loop cycle
                           break                        
@@ -313,6 +314,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextableb', FlexTableB_V28)
+  customElements.define('com-sap-sample-flextableb', FlexTableB_V29)
   
 })() // END of function --> (function () {
