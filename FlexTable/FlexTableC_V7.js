@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V6 extends HTMLElement {
+  class FlexTableC_V7 extends HTMLElement {
     constructor () {
       super()
 
@@ -373,30 +373,31 @@
 				else if (controlComponents===4) {var newdDate = component}
 				else if (controlComponents===5) {var new_value = component}
 				else if (controlComponents===6) {var cDiff = component}
-				
-				// Write into table all dimensions & measures at once (one go only)
-				table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
-				table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
-				table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
-				table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
-				table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
-
-				if (cPercentageNumber>0)
-				{
-					table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-				} else {
-					table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-				}
-
-				// Close each row
-				table_output += '</tr>'					
-				
+								
 				controlComponents = controlComponents + 1
 				
 				if (sortText.indexOf("/") !== -1){
 					sortText = sortText.substring(sortText.indexOf("/")+1, 100).trim()
 				}
 			}
+			
+			// Write into table all dimensions & measures at once (one go only)
+			table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
+
+			if (cPercentageNumber>0)
+			{
+				table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+			} else {
+				table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+			}
+
+			// Close each row
+			table_output += '</tr>'	
+			
 		}
 	}
     
@@ -418,6 +419,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V6)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V7)
   
 })() // END of function --> (function () {
