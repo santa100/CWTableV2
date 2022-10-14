@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V3 extends HTMLElement {
+  class FlexTableC_V4 extends HTMLElement {
     constructor () {
       super()
 
@@ -356,7 +356,7 @@
 		// SORT the array dataArraySort
 		dataArraySort.sort()
 		
-		for (index=0; index<dataArraySort.length; index++) {
+		for (var index=0; index<dataArraySort.length; index++) {
 			let sortText = dataArraySort[index]
 			let controlComponents = 1
 			
@@ -417,6 +417,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V3)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V4)
   
 })() // END of function --> (function () {
