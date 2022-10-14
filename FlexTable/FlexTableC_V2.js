@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V1 extends HTMLElement {
+  class FlexTableC_V2 extends HTMLElement {
     constructor () {
       super()
 
@@ -317,30 +317,29 @@
           // Reset the counter for each row
           if (counterCells>1) 
           {
-		  
-	    if (sorting !== 'Yes')
-	    {
-			// Write into table all dimensions & measures at once (one go only)
-			table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
-			table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
-			table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
-			table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
-			table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
+            if (sorting !== 'Yes')
+            {
+                  // Write into table all dimensions & measures at once (one go only)
+                  table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
+                  table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+                  table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
+                  table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
+                  table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
 
-		    	if (cPercentageNumber>0)
-			{
-				table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-			} else {
-				table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-			}
-		    
-			// Close each row
-			table_output += '</tr>'		    
-	    } else {
-		    
-		let sortText = String(cPercentageNumber) + '/' + cOrderDate + '/' + cValueGM + '/' + newdDate + '/' + new_value + '/' + cDiff
-	    	dataArraySort.push(sortText)
-	    }
+                  if (cPercentageNumber>0)
+                  {
+                    table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+                  } else {
+                    table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+                  }
+                    
+                  // Close each row
+                  table_output += '</tr>'		    
+            } else {
+              
+                let sortText = String(cPercentageNumber) + '/' + cOrderDate + '/' + cValueGM + '/' + newdDate + '/' + new_value + '/' + cDiff
+                dataArraySort.push(sortText)
+            }
 
             // Moved into a different country and
             // Reset the counter, to start a new row
@@ -349,7 +348,7 @@
         
       }) // END of loop --> resultSet.forEach(dp => {
       
-      if (sorting === 'Yes')
+  if (sorting === 'Yes')
 	{
 		// release from memory un-necessary array
 		dataArray = []
@@ -369,11 +368,11 @@
 					cPercentageNumber = Number(component)
 					cPercentage = component + '%'
 				}
-				else if if (controlComponents===2) {cOrderDate = component}
-				else if if (controlComponents===3) {cValueGM = component}
-				else if if (controlComponents===4) {newdDate = component}
-				else if if (controlComponents===5) {new_value = component}
-				else if if (controlComponents===6) {cDiff = component}
+				else if (controlComponents===2) {cOrderDate = component}
+				else if (controlComponents===3) {cValueGM = component}
+				else if (controlComponents===4) {newdDate = component}
+				else if (controlComponents===5) {new_value = component}
+				else if (controlComponents===6) {cDiff = component}
 				
 				// Write into table all dimensions & measures at once (one go only)
 				table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
@@ -418,6 +417,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V1)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V2)
   
 })() // END of function --> (function () {
