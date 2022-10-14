@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V9 extends HTMLElement {
+  class FlexTableC_V10 extends HTMLElement {
     constructor () {
       super()
 
@@ -335,7 +335,28 @@
                   table_output += '</tr>'		    
             } else {
               
-                let sortText = String(cPercentageNumber) + '/' + cOrderDate + '/' + cValueGM + '/' + newdDate + '/' + new_value + '/' + cDiff
+		let myNumber = String(cPercentageNumber)
+
+		let negative = false;
+		if (myNumber.indexOf('-') !== -1)
+		{
+		  negative = true;
+		  myNumber = myNumber.substring(myNumber.indexOf('-')+1,100).trim()
+		}
+		if (myNumber.indexOf('.') !== -1)
+		{
+		  var remain = myNumber.substring(myNumber.indexOf('.')+1, 100)
+		  var component = myNumber.substring(0, myNumber.indexOf('.'))
+		} else {
+		  component = myNumber
+		  remain = ''
+		}
+
+		if (component.length<=4) { component = "0".repeat(4-component.length) + component }
+		if (myNumber.indexOf('.') !== -1) { component = component + '.' + remain }
+		if (negative) { component = '-' + component }     
+		
+                let sortText = component + '/' + cOrderDate + '/' + cValueGM + '/' + newdDate + '/' + new_value + '/' + cDiff
                 dataArraySort.push(sortText)
             }
 
@@ -423,6 +444,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V9)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_10)
   
 })() // END of function --> (function () {
