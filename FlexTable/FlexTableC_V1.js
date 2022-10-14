@@ -136,7 +136,9 @@
       // Loop through the resultset delivered from the backend                   vvvvvvvvvvvv
       // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 
       
+      // Necessray temp arrays
       var dataArray = []
+      var dataArraySort = []
 
       // Retrieve into array: dataArray all necessary dates & rawvalue to be used later on the next forEach loop logic
       resultSet.forEach(dp1 => {
@@ -315,30 +317,89 @@
           // Reset the counter for each row
           if (counterCells>1) 
           {
-            // Write into table all dimensions & measures at once (one go only)
-            table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
-            table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
-            
-            if (cPercentageNumber>0)
-            {
-                table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-            } else {
-                table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-            }
+		  
+	    if (sorting !== 'Yes')
+	    {
+			// Write into table all dimensions & measures at once (one go only)
+			table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
+			table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
 
-            // Close each row
-            table_output += '</tr>'
+		    	if (cPercentageNumber>0)
+			{
+				table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+			} else {
+				table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+			}
+		    
+			// Close each row
+			table_output += '</tr>'		    
+	    } else {
+		    
+		let sortText = String(cPercentageNumber) + '/' + cOrderDate + '/' + cValueGM + '/' + newdDate + '/' + new_value + '/' + cDiff
+	    	dataArraySort.push(sortText)
+	    }
 
             // Moved into a different country and
             // Reset the counter, to start a new row
             counterCells = 1
           }
         
-        
       }) // END of loop --> resultSet.forEach(dp => {
+      
+      if (sorting === 'Yes')
+	{
+		// release from memory un-necessary array
+		dataArray = []
+		
+		// SORT the array dataArraySort
+		dataArraySort.sort()
+		
+		for (index=0; index<dataArraySort.length; index++) {
+			let sortText = dataArraySort[index]
+			let controlComponents = 1
+			
+			while(sortText.indexOf("/") !== -1)
+			{
+				let component = sortText.substring(0, sortText.indexOf("/"))
+				
+				if (controlComponents===1) {
+					cPercentageNumber = Number(component)
+					cPercentage = component + '%'
+				}
+				else if if (controlComponents===2) {cOrderDate = component}
+				else if if (controlComponents===3) {cValueGM = component}
+				else if if (controlComponents===4) {newdDate = component}
+				else if if (controlComponents===5) {new_value = component}
+				else if if (controlComponents===6) {cDiff = component}
+				
+				// Write into table all dimensions & measures at once (one go only)
+				table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
+				table_output += '<td><font style="font-size:12px;">'+ cValueGM +'</font></td>'
+				table_output += '<td><font style="font-size:12px;">'+ newdDate +'</font></td>'
+				table_output += '<td><font style="font-size:12px;">'+ new_value +'</font></td>'
+				table_output += '<td><font style="font-size:12px;">'+ cDiff +'</font></td>'
+
+				if (cPercentageNumber>0)
+				{
+					table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+				} else {
+					table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+				}
+
+				// Close each row
+				table_output += '</tr>'					
+				
+				controlComponents = controlComponents + 1
+				
+				if (sortText.indexOf("/") !== -1){
+					sortText = sortText.substring(sortText.indexOf("/")+1, 100).trim()
+				}
+			}
+		}
+	}
     
       //Close all used tags
       table_output += '</tbody></table></div></div>'
