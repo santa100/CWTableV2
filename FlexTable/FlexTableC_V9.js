@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V8 extends HTMLElement {
+  class FlexTableC_V9 extends HTMLElement {
     constructor () {
       super()
 
@@ -373,13 +373,14 @@
 				else if (controlComponents===3) {var cValueGM = component}
 				else if (controlComponents===4) {var newdDate = component}
 				else if (controlComponents===5) {var new_value = component}
-				else if (controlComponents===6) {var cDiff = component}
 								
 				controlComponents = controlComponents + 1
 				
 				if (sortText.indexOf("/") !== -1){
 					sortText = sortText.substring(sortText.indexOf("/")+1, 100).trim()
 				}
+				
+				if (controlComponents===6) {var cDiff = sortText}
 			}
 			
 			// Write into table all dimensions & measures at once (one go only)
@@ -422,6 +423,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V8)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V9)
   
 })() // END of function --> (function () {
