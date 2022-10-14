@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V5 extends HTMLElement {
+  class FlexTableC_V6 extends HTMLElement {
     constructor () {
       super()
 
@@ -365,14 +365,14 @@
 				let component = sortText.substring(0, sortText.indexOf("/"))
 				
 				if (controlComponents===1) {
-					cPercentageNumber = Number(component)
-					cPercentage = component + '%'
+					var cPercentageNumber = Number(component)
+					var cPercentage = component + '%'
 				}
-				else if (controlComponents===2) {cOrderDate = component}
-				else if (controlComponents===3) {cValueGM = component}
-				else if (controlComponents===4) {newdDate = component}
-				else if (controlComponents===5) {new_value = component}
-				else if (controlComponents===6) {cDiff = component}
+				else if (controlComponents===2) {var cOrderDate = component}
+				else if (controlComponents===3) {var cValueGM = component}
+				else if (controlComponents===4) {var newdDate = component}
+				else if (controlComponents===5) {var new_value = component}
+				else if (controlComponents===6) {var cDiff = component}
 				
 				// Write into table all dimensions & measures at once (one go only)
 				table_output += '<td><font style="font-size:12px;">'+ cOrderDate +'</font></td>'
@@ -409,6 +409,7 @@
       // to avoid memory issues, release from memory the huge HTML string (table_output) and the necessary array: dataArray
       table_output = ''
       dataArray = []
+      dataArraySort = []
       
     } // END of method --> render
     
@@ -417,6 +418,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V5)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V6)
   
 })() // END of function --> (function () {
