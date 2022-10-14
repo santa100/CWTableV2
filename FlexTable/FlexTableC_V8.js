@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V7 extends HTMLElement {
+  class FlexTableC_V8 extends HTMLElement {
     constructor () {
       super()
 
@@ -157,8 +157,6 @@
       //console.log('type='+type)
       //console.log('timecounter='+timecounter)
       //console.log('timerange='+timerange)
-      
-      console.log('----------------')
 
       // Lopp through each value
       resultSet.forEach(dp2 => {
@@ -348,13 +346,16 @@
         
       }) // END of loop --> resultSet.forEach(dp => {
       
-  if (sorting === 'Yes')
+  	if (sorting === 'Yes')
 	{
 		// release from memory un-necessary array
 		dataArray = []
 		
 		// SORT the array dataArraySort
 		dataArraySort.sort()
+		
+		console.log('dataArraySort (SORTED):')
+		console.log(dataArraySort)
 		
 		for (var index=0; index<dataArraySort.length; index++) {
 			let sortText = dataArraySort[index]
@@ -411,6 +412,8 @@
       table_output = ''
       dataArray = []
       dataArraySort = []
+	    
+     console.log('----------------')
       
     } // END of method --> render
     
@@ -419,6 +422,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V7)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V8)
   
 })() // END of function --> (function () {
