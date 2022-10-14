@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V11 extends HTMLElement {
+  class FlexTableC_V12 extends HTMLElement {
     constructor () {
       super()
 
@@ -388,7 +388,7 @@
 				
 				if (controlComponents===1) {
 					var cPercentageNumber = Number(component)
-					var cPercentage = component + '%'
+					var cPercentage = String(cPercentageNumber) + '%'
 				}
 				else if (controlComponents===2) {var cOrderDate = component}
 				else if (controlComponents===3) {var cValueGM = component}
@@ -444,6 +444,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V11)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V12)
   
 })() // END of function --> (function () {
