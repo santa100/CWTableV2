@@ -419,8 +419,7 @@
 			if (cPercentageNumber>0)
 			{
 				table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-			} else {
-				if (new_value!=='-')
+			} else if (new_value!=='-')
 				{
 					table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
 				} else {
@@ -454,6 +453,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V15)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V16)
   
 })() // END of function --> (function () {
