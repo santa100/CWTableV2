@@ -90,7 +90,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS                  vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class FlexTableC_V15 extends HTMLElement {
+  class FlexTableC_V17 extends HTMLElement {
     constructor () {
       super()
 
@@ -420,11 +420,10 @@
 			{
 				table_output += '<td><span style="font-size:16px; color:green; font-weight:bold">▲</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
 			} else if (new_value!=='-')
-				{
-					table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
-				} else {
-					table_output += '<td><span style="font-size:12px;">-</span></td>'
-				}
+			{
+				table_output += '<td><span style="font-size:16px; color:red; font-weight:bold">▼</span><span style="font-size:12px;">'+ cPercentage +'</span></td>'
+			} else {
+				table_output += '<td><span style="font-size:12px;">-</span></td>'
 			}
 
 			// Close each row
@@ -453,6 +452,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-flextablec', FlexTableC_V16)
+  customElements.define('com-sap-sample-flextablec', FlexTableC_V17)
   
 })() // END of function --> (function () {
