@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_27 extends HTMLElement {
+  class AMChartsV4_28 extends HTMLElement {
     constructor () {
       super()
 
@@ -59,7 +59,7 @@
             this._shadowRoot.appendChild(script)
           
           
-            let delay = 2000;
+            let delay = 1000;
             let timer = null; // Will hold a reference to the timer
             let script1 = document.createElement('script')
             timer = setTimeout(function(){
@@ -68,9 +68,7 @@
                       resolve(script1)
                       console.log('loaded charts.js')
                     }            
-                    console.log("Operation Complete!")
                 }, delay);
-              console.log("Out!!!!")
               this._shadowRoot.appendChild(script1)
             })
       
@@ -379,6 +377,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_27)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_28)
  
 })() // END of function --> (function () {
