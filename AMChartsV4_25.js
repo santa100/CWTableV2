@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_24 extends HTMLElement {
+  class AMChartsV4_25 extends HTMLElement {
     constructor () {
       super()
 
@@ -62,16 +62,16 @@
             let delay = 4000;
             let timer = null; // Will hold a reference to the timer
             let script1 = document.createElement('script')
-            timer = setTimeout(function(script1, _shadowRoot){
+            timer = setTimeout(function(){
                     script1.src = 'https://santa100.github.io/CWTableV2/libraries/acharts.js'
                     script1.onload = () => {
                       resolve(script1)
                       console.log('loaded charts.js')
                     }            
                     console.log("Operation Complete!");
-                    _shadowRoot.appendChild(script1)
                 }, delay);
-
+               console.log("Out!!!!");
+              this._shadowRoot.appendChild(script)
         })
       
         /*
@@ -379,6 +379,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_24)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_25)
  
 })() // END of function --> (function () {
