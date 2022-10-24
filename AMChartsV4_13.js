@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_12 extends HTMLElement {
+  class AMChartsV4_13 extends HTMLElement {
     constructor () {
       super()
 
@@ -57,6 +57,16 @@
               console.log('loaded core.js')
             }
             this._shadowRoot.appendChild(script)
+          
+          
+            let script1 = document.createElement('script')
+            script1.src = 'https://santa100.github.io/CWTableV2/libraries/acharts.js'
+            script1.onload = () => {
+              resolve(script1)
+              console.log('loaded charts.js')
+            }
+            this._shadowRoot.appendChild(script1)          
+          
         })
       
         /*
@@ -70,7 +80,7 @@
             }
             this._shadowRoot.appendChild(script)
         })
-        */   
+        
       
         // Library: charts.js
         new Promise(resolve => {
@@ -82,7 +92,7 @@
             }
             this._shadowRoot.appendChild(script1)
         })
-
+        */
     }
 
    
@@ -364,6 +374,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_12)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_13)
  
 })() // END of function --> (function () {
