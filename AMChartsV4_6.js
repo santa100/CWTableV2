@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_5 extends HTMLElement {
+  class AMChartsV4_6 extends HTMLElement {
     constructor () {
       super()
 
@@ -47,6 +47,17 @@
         this._shadowRoot.appendChild(div)
      
         // Load necessary libraries
+      
+        // Library: animated.js
+        new Promise(resolve => {
+            let script = document.createElement('script')
+            script.src = 'https://cdn.amcharts.com/lib/4/themes/animated.js'
+            script.onload = () => {
+              resolve(script)
+              console.log('loaded animated.js')
+            }
+            this._shadowRoot.appendChild(script)
+        })
       
         // Library: charts.js
         new Promise(resolve => {
@@ -70,16 +81,6 @@
             this._shadowRoot.appendChild(script)
         })
 
-        // Library: animated.js
-        new Promise(resolve => {
-            let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/themes/animated.js'
-            script.onload = () => {
-              resolve(script)
-              console.log('loaded animated.js')
-            }
-            this._shadowRoot.appendChild(script)
-        })
     }
 
    
@@ -361,6 +362,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_5)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_6)
  
 })() // END of function --> (function () {
