@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_6 extends HTMLElement {
+  class AMChartsV4_7 extends HTMLElement {
     constructor () {
       super()
 
@@ -48,13 +48,13 @@
      
         // Load necessary libraries
       
-        // Library: animated.js
+        // Library: core.js
         new Promise(resolve => {
             let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/themes/animated.js'
+            script.src = 'https://cdn.amcharts.com/lib/4/core.js'
             script.onload = () => {
               resolve(script)
-              console.log('loaded animated.js')
+              console.log('loaded core.js')
             }
             this._shadowRoot.appendChild(script)
         })
@@ -70,16 +70,19 @@
             this._shadowRoot.appendChild(script)
         })      
       
-        // Library: core.js
+        /*
+        // Library: animated.js
         new Promise(resolve => {
             let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/core.js'
+            script.src = 'https://cdn.amcharts.com/lib/4/themes/animated.js'
             script.onload = () => {
               resolve(script)
-              console.log('loaded core.js')
+              console.log('loaded animated.js')
             }
             this._shadowRoot.appendChild(script)
         })
+        */
+       
 
     }
 
@@ -362,6 +365,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_6)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_7)
  
 })() // END of function --> (function () {
