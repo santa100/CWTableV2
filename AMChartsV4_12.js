@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_11 extends HTMLElement {
+  class AMChartsV4_12 extends HTMLElement {
     constructor () {
       super()
 
@@ -51,7 +51,7 @@
         // Library: core.js
         new Promise(resolve => {
             let script = document.createElement('script')
-            script.src = 'https://santa100.github.io/CWTableV2/libraries/acore.js'
+            script.src = 'https://santa100.github.io/CWTableV2/libraries/bcore.js'
             script.onload = () => {
               resolve(script)
               console.log('loaded core.js')
@@ -59,6 +59,7 @@
             this._shadowRoot.appendChild(script)
         })
       
+        /*
         // Library: animated.js
         new Promise(resolve => {
             let script = document.createElement('script')
@@ -69,12 +70,12 @@
             }
             this._shadowRoot.appendChild(script)
         })
-             
+        */   
       
         // Library: charts.js
         new Promise(resolve => {
             let script1 = document.createElement('script')
-            script1.src = 'https://santa100.github.io/CWTableV2/libraries/bcharts.js'
+            script1.src = 'https://santa100.github.io/CWTableV2/libraries/acharts.js'
             script1.onload = () => {
               resolve(script1)
               console.log('loaded charts.js')
@@ -363,6 +364,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_11)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_12)
  
 })() // END of function --> (function () {
