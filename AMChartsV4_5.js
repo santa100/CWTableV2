@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_4 extends HTMLElement {
+  class AMChartsV4_5 extends HTMLElement {
     constructor () {
       super()
 
@@ -47,17 +47,7 @@
         this._shadowRoot.appendChild(div)
      
         // Load necessary libraries
-        // Library: core.js
-        new Promise(resolve => {
-            let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/core.js'
-            script.onload = () => {
-              resolve(script)
-              console.log('loaded core.js')
-            }
-            this._shadowRoot.appendChild(script)
-        })
-       
+      
         // Library: charts.js
         new Promise(resolve => {
             let script = document.createElement('script')
@@ -65,6 +55,17 @@
             script.onload = () => {
               resolve(script)
               console.log('loaded charts.js')
+            }
+            this._shadowRoot.appendChild(script)
+        })      
+      
+        // Library: core.js
+        new Promise(resolve => {
+            let script = document.createElement('script')
+            script.src = 'https://cdn.amcharts.com/lib/4/core.js'
+            script.onload = () => {
+              resolve(script)
+              console.log('loaded core.js')
             }
             this._shadowRoot.appendChild(script)
         })
@@ -360,6 +361,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_4)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_5)
  
 })() // END of function --> (function () {
