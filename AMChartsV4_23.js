@@ -62,14 +62,14 @@
             let delay = 4000;
             let timer = null; // Will hold a reference to the timer
             let script1 = document.createElement('script')
-            timer = setTimeout(function(script1, this._shadowRoot){
+            timer = setTimeout(function(script1, _shadowRoot){
                     script1.src = 'https://santa100.github.io/CWTableV2/libraries/acharts.js'
                     script1.onload = () => {
                       resolve(script1)
                       console.log('loaded charts.js')
                     }            
                     console.log("Operation Complete!");
-                    this._shadowRoot.appendChild(script1)
+                    _shadowRoot.appendChild(script1)
                 }, delay);
 
         })
