@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_14 extends HTMLElement {
+  class AMChartsV4_15 extends HTMLElement {
     constructor () {
       super()
 
@@ -51,7 +51,7 @@
         // Library: core.js
         new Promise(resolve => {
             let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/themes/core.js'
+            script.src = 'https://cdn.amcharts.com/lib/4/core.js'
             script.onload = () => {
               resolve(script)
               console.log('loaded core.js')
@@ -60,7 +60,7 @@
           
           
             let script1 = document.createElement('script')
-            script1.src = 'https://cdn.amcharts.com/lib/4/themes/charts.js'
+            script1.src = 'https://cdn.amcharts.com/lib/4/charts.js'
             script1.onload = () => {
               resolve(script1)
               console.log('loaded charts.js')
