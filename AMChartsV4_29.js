@@ -48,7 +48,7 @@
      
         // Load necessary libraries
       
-        // Library: core.js
+        // Library: core.js & charts.js
         new Promise(resolve => {
             let script = document.createElement('script')
             script.src = 'https://santa100.github.io/CWTableV2/libraries/bcore.js'
@@ -79,31 +79,6 @@
                 }, delay);
               this._shadowRoot.appendChild(script1)
             })
-      
-        /*
-        // Library: animated.js
-        new Promise(resolve => {
-            let script = document.createElement('script')
-            script.src = 'https://cdn.amcharts.com/lib/4/themes/animated.js'
-            script.onload = () => {
-              resolve(script)
-              console.log('loaded animated.js')
-            }
-            this._shadowRoot.appendChild(script)
-        })
-        
-      
-        // Library: charts.js
-        new Promise(resolve => {
-            let script1 = document.createElement('script')
-            script1.src = 'https://santa100.github.io/CWTableV2/libraries/acharts.js'
-            script1.onload = () => {
-              resolve(script1)
-              console.log('loaded charts.js')
-            }
-            this._shadowRoot.appendChild(script1)
-        })
-        */
     }
 
    
