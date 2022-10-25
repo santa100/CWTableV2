@@ -26,7 +26,7 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // HTML extension with all necessary logic(s) wrtitten JS vvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  
-  class AMChartsV4_28 extends HTMLElement {
+  class AMChartsV4_29 extends HTMLElement {
     constructor () {
       super()
 
@@ -58,8 +58,16 @@
             }
             this._shadowRoot.appendChild(script)
           
+            // ###########################################################################################################
+            // NOTE:
+            // To avoid error: am4internal_webpackJsonp is not defined.
+            // The issue is due to the fact that the library charts.js is being loaded first than the libray core.js and
+            // core.js NEEDS to be loaded in first place ALWAYS.
+            // So, the workaround is to load first core.js and after create a a timeout (like a Timer in SAC) that
+            // waits 1 second and only after that loads the second libarary needed charts.js.
+            // ###########################################################################################################
           
-            let delay = 1000;
+            let delay = 1000; // delay 1 second
             let timer = null; // Will hold a reference to the timer
             let script1 = document.createElement('script')
             timer = setTimeout(function(){
@@ -377,6 +385,6 @@
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
   // Return the end result to SAC (SAP ANALYTICS CLOUD) application vvvvvvvvvvvvvvvvvvvvv
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_28)
+  customElements.define('com-sap-sample-amchartsv4', AMChartsV4_29)
  
 })() // END of function --> (function () {
